@@ -483,8 +483,9 @@
         <div class="brand"><span class="mark" aria-hidden="true"></span>KukuPaste</div>
         <div class="nav-right">
           <div class="nav-links">
+            <a href="#product" data-i18n="navProduct">Product</a>
+            <a href="#pro" data-i18n="navPro">Pro</a>
             <a href="#packs" data-i18n="navPacks">Packs</a>
-            <a href="#how" data-i18n="navHow">How to use</a>
             <a href="#download" data-i18n="navBeta">Beta RC</a>
           </div>
           <div class="lang-switch" aria-label="Language">
@@ -497,15 +498,15 @@
 
       <header class="hero">
         <div>
-          <div class="eyebrow" data-i18n="eyebrow">AI workflow packs</div>
-          <h1 data-i18n="heroTitle">Ready-made AI workflow packs for Claude, Codex, Cursor, and client work</h1>
+          <div class="eyebrow" data-i18n="eyebrow">Sequential paste for AI workflows</div>
+          <h1 data-i18n="heroTitle">KukuPaste turns copied text into a paste-ready stack</h1>
           <p class="lede" data-i18n="heroLead">
-            KukuPaste helps you paste prompt chains in order: Ctrl+C collects, Ctrl+Q pastes the next step. It is a repeatable AI workflow, not a folder of random snippets.
+            Copy prompts, replies, notes, and code review steps with Ctrl+C. Then paste them in order with Ctrl+Q across Claude, Codex, Cursor, email, CRM, and support chats.
           </p>
           <div class="actions">
             <a class="btn primary" href="https://kukuluku.lemonsqueezy.com/checkout/buy/588de431-dbca-4648-93d8-4d403c2dc849" data-i18n="buyPro">Buy Pro $39.99</a>
             <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe" data-i18n="download">Download Beta RC</a>
-            <a class="btn" href="#packs" data-i18n="viewPacks">View packs</a>
+            <a class="btn" href="#product" data-i18n="seeHow">See how it works</a>
           </div>
           <div class="meta" data-i18n="heroMeta">Current RC · Windows · 3 MB · SHA-256 below</div>
           <div class="badges" aria-label="Privacy badges">
@@ -524,23 +525,49 @@
           <div class="steps">
             <div class="step">
               <span class="num">1</span>
-              <div><strong>Review</strong><span data-i18n="panelReview">Ask AI to find bugs, risks, regressions, and missing tests.</span></div>
+              <div><strong>Ctrl+C</strong><span data-i18n="panelReview">Copy prompts, replies, notes, or code fragments as usual.</span></div>
             </div>
             <div class="step">
               <span class="num">2</span>
-              <div><strong>Fix</strong><span data-i18n="panelFix">Ask for the smallest safe fix without unrelated refactoring.</span></div>
+              <div><strong>Stack</strong><span data-i18n="panelFix">KukuPaste keeps the copied texts ready in order.</span></div>
             </div>
             <div class="step">
               <span class="num">3</span>
-              <div><strong>PR Summary</strong><span data-i18n="panelSummary">Create a clear summary of changes and a test plan.</span></div>
+              <div><strong>Ctrl+Q</strong><span data-i18n="panelSummary">Paste the next item exactly where you need it.</span></div>
             </div>
             <div class="step">
               <span class="num">4</span>
-              <div><strong>Release risk</strong><span data-i18n="panelRisk">Check dangerous areas before a beta or RC release.</span></div>
+              <div><strong>Repeat</strong><span data-i18n="panelRisk">Move through AI chats, docs, email, CRM, and support without searching.</span></div>
             </div>
           </div>
         </aside>
       </header>
+
+      <section id="product">
+        <h2 data-i18n="productTitle">What KukuPaste actually does</h2>
+        <p class="section-lede" data-i18n="productLead">
+          KukuPaste is a tiny Windows utility for people who copy the same kinds of text all day: AI prompts, support replies, code review steps, research notes, and sales follow-ups.
+        </p>
+        <div class="flow-grid">
+          <div class="flow"><h3 data-i18n="product1Title">1. Copy normally</h3><p data-i18n="product1Text">Use Ctrl+C in any app. KukuPaste adds each copied text to the active stack.</p></div>
+          <div class="flow"><h3 data-i18n="product2Title">2. Keep order</h3><p data-i18n="product2Text">The first copied item stays first. Your next paste is predictable.</p></div>
+          <div class="flow"><h3 data-i18n="product3Title">3. Paste next</h3><p data-i18n="product3Text">Press Ctrl+Q to paste the next stack item into the current window.</p></div>
+          <div class="flow"><h3 data-i18n="product4Title">4. Reuse workflows</h3><p data-i18n="product4Text">Save common stacks as libraries and load them again when the same work returns.</p></div>
+        </div>
+      </section>
+
+      <section id="where">
+        <h2 data-i18n="whereTitle">Where it helps</h2>
+        <p class="section-lede" data-i18n="whereLead">
+          KukuPaste is useful whenever one task needs several text blocks in a specific order.
+        </p>
+        <div class="security-grid">
+          <div class="security"><h3 data-i18n="where1Title">AI app building</h3><p data-i18n="where1Text">Send review, fix, summary, and QA prompts to Claude, Codex, or Cursor.</p></div>
+          <div class="security"><h3 data-i18n="where2Title">Support</h3><p data-i18n="where2Text">Reply to users with calm, repeatable support flows.</p></div>
+          <div class="security"><h3 data-i18n="where3Title">Sales</h3><p data-i18n="where3Text">Prepare follow-ups, objection notes, and next-step messages.</p></div>
+          <div class="security"><h3 data-i18n="where4Title">Research and content</h3><p data-i18n="where4Text">Move notes, briefs, outlines, scripts, and social posts without tab hunting.</p></div>
+        </div>
+      </section>
 
       <section id="why">
         <h2 data-i18n="whyTitle">Why this is not just a clipboard manager</h2>
@@ -560,6 +587,30 @@
         </div>
       </section>
 
+      <section id="pro">
+        <div class="download">
+          <div>
+            <h2 data-i18n="proTitle">KukuPaste Pro Lifetime Beta</h2>
+            <p class="section-lede" data-i18n="proLead">
+              One-time $39.99. Early buyer price for people who want higher limits, portable libraries, and ready-made workflow packs.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="https://kukuluku.lemonsqueezy.com/checkout/buy/588de431-dbca-4648-93d8-4d403c2dc849" data-i18n="buyPro">Buy Pro $39.99</a>
+              <a class="btn" href="#packs" data-i18n="viewPacks">View packs</a>
+            </div>
+          </div>
+          <div class="plain-box">
+            <h3 data-i18n="proIncludesTitle">Included in Pro</h3>
+            <p data-i18n="proIncludesText">Higher limits, unlimited libraries, library import/export, workflow packs, and future v1 updates included.</p>
+            <div class="badges">
+              <span class="badge">One-time $39.99</span>
+              <span class="badge">Lifetime Beta</span>
+              <span class="badge">Future v1 updates</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="packs">
         <h2 data-i18n="packsTitle">5 packs that cover paid AI workflows</h2>
         <p class="section-lede" data-i18n="packsLead">
@@ -569,7 +620,7 @@
       </section>
 
       <section id="how">
-        <h2 data-i18n="howTitle">How to use it with Claude, Codex, or Cursor</h2>
+        <h2 data-i18n="howTitle">How to use workflow packs</h2>
         <p class="section-lede" data-i18n="howLead">
           A pack works like a conversation script. Load a library into the stack, then paste each step wherever you work.
         </p>
@@ -623,21 +674,45 @@
     <script>
       const copy = {
         en: {
+          navProduct: "Product",
+          navPro: "Pro",
           navPacks: "Packs",
           navHow: "How to use",
           navBeta: "Beta RC",
-          eyebrow: "AI workflow packs",
-          heroTitle: "Ready-made AI workflow packs for Claude, Codex, Cursor, and client work",
+          eyebrow: "Sequential paste for AI workflows",
+          heroTitle: "KukuPaste turns copied text into a paste-ready stack",
           heroLead:
-            "KukuPaste helps you paste prompt chains in order: Ctrl+C collects, Ctrl+Q pastes the next step. It is a repeatable AI workflow, not a folder of random snippets.",
+            "Copy prompts, replies, notes, and code review steps with Ctrl+C. Then paste them in order with Ctrl+Q across Claude, Codex, Cursor, email, CRM, and support chats.",
           download: "Download Beta RC",
           buyPro: "Buy Pro $39.99",
+          seeHow: "See how it works",
           viewPacks: "View packs",
           heroMeta: "Current RC · Windows · 3 MB · SHA-256 below",
-          panelReview: "Ask AI to find bugs, risks, regressions, and missing tests.",
-          panelFix: "Ask for the smallest safe fix without unrelated refactoring.",
-          panelSummary: "Create a clear summary of changes and a test plan.",
-          panelRisk: "Check dangerous areas before a beta or RC release.",
+          panelReview: "Copy prompts, replies, notes, or code fragments as usual.",
+          panelFix: "KukuPaste keeps the copied texts ready in order.",
+          panelSummary: "Paste the next item exactly where you need it.",
+          panelRisk: "Move through AI chats, docs, email, CRM, and support without searching.",
+          productTitle: "What KukuPaste actually does",
+          productLead:
+            "KukuPaste is a tiny Windows utility for people who copy the same kinds of text all day: AI prompts, support replies, code review steps, research notes, and sales follow-ups.",
+          product1Title: "1. Copy normally",
+          product1Text: "Use Ctrl+C in any app. KukuPaste adds each copied text to the active stack.",
+          product2Title: "2. Keep order",
+          product2Text: "The first copied item stays first. Your next paste is predictable.",
+          product3Title: "3. Paste next",
+          product3Text: "Press Ctrl+Q to paste the next stack item into the current window.",
+          product4Title: "4. Reuse workflows",
+          product4Text: "Save common stacks as libraries and load them again when the same work returns.",
+          whereTitle: "Where it helps",
+          whereLead: "KukuPaste is useful whenever one task needs several text blocks in a specific order.",
+          where1Title: "AI app building",
+          where1Text: "Send review, fix, summary, and QA prompts to Claude, Codex, or Cursor.",
+          where2Title: "Support",
+          where2Text: "Reply to users with calm, repeatable support flows.",
+          where3Title: "Sales",
+          where3Text: "Prepare follow-ups, objection notes, and next-step messages.",
+          where4Title: "Research and content",
+          where4Text: "Move notes, briefs, outlines, scripts, and social posts without tab hunting.",
           whyTitle: "Why this is not just a clipboard manager",
           whyLead:
             "A regular clipboard helps you find old text. KukuPaste helps you move through a work scenario: one pack loads several steps, and Ctrl+Q pastes them one by one into Claude, Codex, Cursor, CRM, email, or support chat.",
@@ -646,10 +721,15 @@
           workflowTitle: "Workflow pack",
           workflowText:
             "It splits work into clear steps: review -> fix -> summary -> risk check. AI answers better because the task is cleaner.",
+          proTitle: "KukuPaste Pro Lifetime Beta",
+          proLead:
+            "One-time $39.99. Early buyer price for people who want higher limits, portable libraries, and ready-made workflow packs.",
+          proIncludesTitle: "Included in Pro",
+          proIncludesText: "Higher limits, unlimited libraries, library import/export, workflow packs, and future v1 updates included.",
           packsTitle: "5 packs that cover paid AI workflows",
           packsLead:
             "These packs were chosen because they sit next to work people already pay for: development, support, sales, research, and content.",
-          howTitle: "How to use it with Claude, Codex, or Cursor",
+          howTitle: "How to use workflow packs",
           howLead: "A pack works like a conversation script. Load a library into the stack, then paste each step wherever you work.",
           flow1Title: "1. Choose a pack",
           flow1Text: "Open Library and click “To stack” on the workflow you need.",
@@ -763,21 +843,45 @@
           ],
         },
         ru: {
+          navProduct: "Продукт",
+          navPro: "Pro",
           navPacks: "Packs",
           navHow: "Как использовать",
           navBeta: "Beta RC",
-          eyebrow: "AI workflow packs",
-          heroTitle: "Готовые AI workflow packs для Claude, Codex, Cursor и клиентской работы",
+          eyebrow: "Последовательная вставка для AI workflows",
+          heroTitle: "KukuPaste превращает скопированные тексты в готовый стек для вставки",
           heroLead:
-            "KukuPaste помогает вставлять цепочки промптов по порядку: Ctrl+C собирает, Ctrl+Q вставляет следующий шаг. Это повторяемый сценарий работы с AI, а не папка случайных фраз.",
+            "Копируй промпты, ответы, заметки и шаги code review через Ctrl+C. Потом вставляй их по порядку через Ctrl+Q в Claude, Codex, Cursor, почту, CRM и поддержку.",
           download: "Скачать Beta RC",
           buyPro: "Купить Pro $39.99",
+          seeHow: "Как это работает",
           viewPacks: "Посмотреть packs",
           heroMeta: "Current RC · Windows · 3 MB · SHA-256 ниже",
-          panelReview: "Попросить AI найти баги, риски, регрессии и пропущенные тесты.",
-          panelFix: "Попросить минимальный безопасный фикс без лишнего рефакторинга.",
-          panelSummary: "Собрать понятное описание изменений и план проверки.",
-          panelRisk: "Проверить опасные места перед beta/RC выпуском.",
+          panelReview: "Копируй промпты, ответы, заметки или фрагменты кода как обычно.",
+          panelFix: "KukuPaste держит скопированные тексты в нужном порядке.",
+          panelSummary: "Ctrl+Q вставляет следующий элемент туда, где он нужен.",
+          panelRisk: "Работай между AI-чатами, документами, почтой, CRM и поддержкой без поиска.",
+          productTitle: "Что на самом деле делает KukuPaste",
+          productLead:
+            "KukuPaste - маленькая Windows-утилита для людей, которые весь день копируют похожие тексты: AI-промпты, ответы поддержки, шаги code review, research notes и sales follow-ups.",
+          product1Title: "1. Копируй как обычно",
+          product1Text: "Используй Ctrl+C в любом приложении. KukuPaste добавляет каждый текст в активный стек.",
+          product2Title: "2. Сохраняй порядок",
+          product2Text: "Первый скопированный текст остаётся первым. Следующая вставка предсказуема.",
+          product3Title: "3. Вставляй следующий",
+          product3Text: "Нажми Ctrl+Q, чтобы вставить следующий элемент стека в текущее окно.",
+          product4Title: "4. Повторяй workflows",
+          product4Text: "Сохраняй частые стеки как библиотеки и загружай их снова, когда задача возвращается.",
+          whereTitle: "Где это помогает",
+          whereLead: "KukuPaste полезен везде, где одна задача требует несколько текстовых блоков в точном порядке.",
+          where1Title: "Разработка с AI",
+          where1Text: "Отправляй review, fix, summary и QA prompts в Claude, Codex или Cursor.",
+          where2Title: "Поддержка",
+          where2Text: "Отвечай пользователям спокойными и повторяемыми support flows.",
+          where3Title: "Продажи",
+          where3Text: "Готовь follow-ups, objections notes и next-step messages.",
+          where4Title: "Исследования и контент",
+          where4Text: "Переноси notes, briefs, outlines, scripts и social posts без охоты по вкладкам.",
           whyTitle: "Почему это не просто clipboard manager",
           whyLead:
             "Обычный clipboard помогает найти старый текст. KukuPaste помогает пройти рабочий сценарий: один pack загружает несколько шагов, а Ctrl+Q вставляет их по очереди в Claude, Codex, Cursor, CRM, почту или чат поддержки.",
@@ -786,10 +890,15 @@
           workflowTitle: "Workflow pack",
           workflowText:
             "Делит работу на понятные шаги: review -> fix -> summary -> risk check. AI отвечает лучше, потому что задача яснее.",
+          proTitle: "KukuPaste Pro Lifetime Beta",
+          proLead:
+            "One-time $39.99. Early buyer price для людей, которым нужны повышенные лимиты, переносимые библиотеки и готовые workflow packs.",
+          proIncludesTitle: "Что входит в Pro",
+          proIncludesText: "Повышенные лимиты, unlimited libraries, import/export библиотек, workflow packs и будущие обновления v1 included.",
           packsTitle: "5 packs, которые закрывают платные AI-сценарии",
           packsLead:
             "Эти наборы выбраны не случайно: они лежат рядом с тем, за что люди уже платят - разработка, поддержка, продажи, исследования и контент.",
-          howTitle: "Как использовать с Claude, Codex или Cursor",
+          howTitle: "Как использовать workflow packs",
           howLead:
             "Pack работает как сценарий разговора. Ты загружаешь библиотеку в стек, а потом вставляешь шаги по очереди туда, где работаешь.",
           flow1Title: "1. Выбери pack",
@@ -904,21 +1013,45 @@
           ],
         },
         es: {
+          navProduct: "Producto",
+          navPro: "Pro",
           navPacks: "Packs",
           navHow: "Cómo usar",
           navBeta: "Beta RC",
-          eyebrow: "AI workflow packs",
-          heroTitle: "Packs de workflows para Claude, Codex, Cursor y trabajo con clientes",
+          eyebrow: "Pegado secuencial para workflows de IA",
+          heroTitle: "KukuPaste convierte textos copiados en un stack listo para pegar",
           heroLead:
-            "KukuPaste te ayuda a pegar cadenas de prompts en orden: Ctrl+C recoge textos, Ctrl+Q pega el siguiente paso. Es un workflow repetible con IA, no una carpeta de textos sueltos.",
+            "Copia prompts, respuestas, notas y pasos de code review con Ctrl+C. Luego pégalos en orden con Ctrl+Q en Claude, Codex, Cursor, email, CRM y soporte.",
           download: "Descargar Beta RC",
           buyPro: "Comprar Pro $39.99",
+          seeHow: "Ver cómo funciona",
           viewPacks: "Ver packs",
           heroMeta: "Current RC · Windows · 3 MB · SHA-256 abajo",
-          panelReview: "Pide a la IA encontrar bugs, riesgos, regresiones y tests faltantes.",
-          panelFix: "Pide el arreglo seguro más pequeño, sin refactors innecesarios.",
-          panelSummary: "Crea un resumen claro de cambios y un plan de pruebas.",
-          panelRisk: "Revisa las áreas peligrosas antes de una beta o release candidate.",
+          panelReview: "Copia prompts, respuestas, notas o fragmentos de código como siempre.",
+          panelFix: "KukuPaste mantiene los textos copiados listos y en orden.",
+          panelSummary: "Ctrl+Q pega el siguiente elemento exactamente donde lo necesitas.",
+          panelRisk: "Trabaja entre chats de IA, docs, email, CRM y soporte sin buscar.",
+          productTitle: "Qué hace realmente KukuPaste",
+          productLead:
+            "KukuPaste es una pequeña utilidad para Windows para personas que copian textos parecidos todo el día: prompts de IA, respuestas de soporte, pasos de code review, research notes y sales follow-ups.",
+          product1Title: "1. Copia normalmente",
+          product1Text: "Usa Ctrl+C en cualquier app. KukuPaste agrega cada texto copiado al stack activo.",
+          product2Title: "2. Mantén el orden",
+          product2Text: "El primer texto copiado queda primero. Tu siguiente pegado es predecible.",
+          product3Title: "3. Pega el siguiente",
+          product3Text: "Presiona Ctrl+Q para pegar el siguiente elemento del stack en la ventana actual.",
+          product4Title: "4. Reutiliza workflows",
+          product4Text: "Guarda stacks comunes como bibliotecas y cárgalos otra vez cuando vuelve la misma tarea.",
+          whereTitle: "Dónde ayuda",
+          whereLead: "KukuPaste sirve cuando una tarea necesita varios bloques de texto en un orden específico.",
+          where1Title: "Construcción de apps con IA",
+          where1Text: "Envía review, fix, summary y QA prompts a Claude, Codex o Cursor.",
+          where2Title: "Soporte",
+          where2Text: "Responde a usuarios con flujos de soporte tranquilos y repetibles.",
+          where3Title: "Ventas",
+          where3Text: "Prepara follow-ups, notas de objeciones y next-step messages.",
+          where4Title: "Research y contenido",
+          where4Text: "Mueve notas, briefs, outlines, scripts y posts sin cazar pestañas.",
           whyTitle: "Por qué no es solo un clipboard manager",
           whyLead:
             "Un clipboard normal te ayuda a encontrar textos antiguos. KukuPaste te ayuda a seguir un escenario de trabajo: un pack carga varios pasos y Ctrl+Q los pega uno por uno en Claude, Codex, Cursor, CRM, email o soporte.",
@@ -927,10 +1060,15 @@
           workflowTitle: "Workflow pack",
           workflowText:
             "Divide el trabajo en pasos claros: review -> fix -> summary -> risk check. La IA responde mejor porque la tarea está más limpia.",
+          proTitle: "KukuPaste Pro Lifetime Beta",
+          proLead:
+            "Pago único de $39.99. Precio early buyer para quienes necesitan límites más altos, bibliotecas portables y workflow packs listos.",
+          proIncludesTitle: "Incluido en Pro",
+          proIncludesText: "Límites más altos, bibliotecas ilimitadas, import/export de bibliotecas, workflow packs y futuras actualizaciones v1 incluidas.",
           packsTitle: "5 packs para workflows de IA con valor de pago",
           packsLead:
             "Estos packs cubren trabajos por los que la gente ya paga: desarrollo, soporte, ventas, investigación y contenido.",
-          howTitle: "Cómo usarlo con Claude, Codex o Cursor",
+          howTitle: "Cómo usar workflow packs",
           howLead: "Un pack funciona como guion de conversación. Cargas una biblioteca al stack y pegas cada paso donde trabajas.",
           flow1Title: "1. Elige un pack",
           flow1Text: "Abre Library y pulsa “To stack” en el workflow que necesitas.",
