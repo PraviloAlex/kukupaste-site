@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KukuPaste Packs for AI Workflows</title>
+    <title>KukuPaste - AI workflow packs</title>
     <meta
       name="description"
-      content="Готовые workflow packs для Claude, Codex, Cursor, поддержки, продаж, исследований и контента."
+      content="KukuPaste is a local-first Windows utility for repeatable AI workflows in Claude, Codex, Cursor, support, sales, research, and content."
     />
     <style>
       :root {
@@ -23,7 +23,7 @@
         --green: #67c587;
         --blue: #7fb0ff;
         --font-ui: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
-        --font-mono: "Cascadia Mono", "Space Mono", Consolas, monospace;
+        --font-mono: "Cascadia Mono", Consolas, monospace;
       }
 
       * {
@@ -87,6 +87,14 @@
         content: "";
       }
 
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
       .nav-links {
         display: flex;
         gap: 22px;
@@ -98,6 +106,33 @@
 
       .nav-links a {
         text-decoration: none;
+      }
+
+      .lang-switch {
+        display: inline-flex;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .lang-switch button {
+        min-width: 38px;
+        height: 30px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .lang-switch button.active {
+        background: var(--orange);
+        color: #120d0a;
       }
 
       .hero {
@@ -133,7 +168,7 @@
       h1 {
         max-width: 760px;
         margin: 0 0 20px;
-        font-size: clamp(42px, 6vw, 70px);
+        font-size: clamp(42px, 6vw, 68px);
         line-height: 1.02;
         letter-spacing: 0;
       }
@@ -185,7 +220,8 @@
         margin-top: 22px;
       }
 
-      .badge {
+      .badge,
+      .pill {
         padding: 8px 11px;
         border: 1px solid var(--line);
         border-radius: 999px;
@@ -196,10 +232,19 @@
         font-weight: 800;
       }
 
-      .workflow-panel {
-        border: 1px solid var(--line-strong);
+      .workflow-panel,
+      .plain-box,
+      .pack,
+      .security,
+      .flow,
+      details {
+        border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--panel);
+      }
+
+      .workflow-panel {
+        border-color: var(--line-strong);
         overflow: hidden;
       }
 
@@ -265,43 +310,44 @@
         line-height: 1.12;
       }
 
+      h3 {
+        margin: 0 0 12px;
+        font-size: 19px;
+      }
+
+      p {
+        margin: 0;
+      }
+
       .section-lede {
-        max-width: 720px;
+        max-width: 760px;
         margin: 0 0 30px;
         color: var(--soft);
         font-size: 18px;
       }
 
-      .compare {
+      .compare,
+      .download {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 16px;
       }
 
-      .plain-box {
-        padding: 22px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--panel);
-      }
-
-      .plain-box h3,
-      .pack h3,
-      .security h3,
-      .flow h3 {
-        margin: 0 0 12px;
-        font-size: 19px;
+      .plain-box,
+      .security,
+      .flow {
+        padding: 20px;
       }
 
       .plain-box p,
       .pack p,
       .security p,
       .flow p {
-        margin: 0;
         color: var(--soft);
       }
 
-      .code-line {
+      .code-line,
+      .hash {
         margin-top: 16px;
         padding: 12px;
         border: 1px solid var(--line);
@@ -311,6 +357,10 @@
         font-family: var(--font-mono);
         font-size: 13px;
         overflow-wrap: anywhere;
+      }
+
+      .hash {
+        color: var(--blue);
       }
 
       .packs {
@@ -323,9 +373,6 @@
         grid-template-columns: 0.82fr 1.18fr;
         gap: 18px;
         padding: 22px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--panel);
       }
 
       .pack-meta {
@@ -337,10 +384,6 @@
 
       .pill {
         padding: 6px 9px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        color: var(--muted);
-        font-family: var(--font-mono);
         font-size: 11px;
       }
 
@@ -371,14 +414,11 @@
 
       details {
         grid-column: 1 / -1;
-        border: 1px solid var(--line);
-        border-radius: 8px;
         background: #111;
       }
 
       summary {
         padding: 14px 16px;
-        color: var(--text);
         cursor: pointer;
         font-weight: 800;
       }
@@ -404,30 +444,8 @@
         gap: 14px;
       }
 
-      .security,
-      .flow {
-        padding: 18px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--panel);
-      }
-
       .download {
-        display: grid;
-        grid-template-columns: 1fr 0.7fr;
-        gap: 24px;
         align-items: start;
-      }
-
-      .hash {
-        padding: 16px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #0c0c0c;
-        color: var(--blue);
-        font-family: var(--font-mono);
-        font-size: 12px;
-        overflow-wrap: anywhere;
       }
 
       .footer {
@@ -439,11 +457,8 @@
       @media (max-width: 900px) {
         .hero,
         .pack,
-        .download {
-          grid-template-columns: 1fr;
-        }
-
         .compare,
+        .download,
         .pack-grid,
         .security-grid,
         .flow-grid {
@@ -455,35 +470,44 @@
           flex-direction: column;
           margin-bottom: 42px;
         }
+
+        .nav-right {
+          justify-content: flex-start;
+        }
       }
     </style>
   </head>
   <body>
     <main class="page">
-      <nav class="nav" aria-label="Навигация">
+      <nav class="nav" aria-label="Navigation">
         <div class="brand"><span class="mark" aria-hidden="true"></span>KukuPaste</div>
-        <div class="nav-links">
-          <a href="#packs">Packs</a>
-          <a href="#how">Как использовать</a>
-          <a href="#download">Beta RC</a>
+        <div class="nav-right">
+          <div class="nav-links">
+            <a href="#packs" data-i18n="navPacks">Packs</a>
+            <a href="#how" data-i18n="navHow">How to use</a>
+            <a href="#download" data-i18n="navBeta">Beta RC</a>
+          </div>
+          <div class="lang-switch" aria-label="Language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="ru">RU</button>
+            <button type="button" data-lang="es">ES</button>
+          </div>
         </div>
       </nav>
 
       <header class="hero">
         <div>
-          <div class="eyebrow">AI workflow packs</div>
-          <h1>Готовые AI workflow packs для Claude, Codex, Cursor и клиентской работы</h1>
-          <p class="lede">
-            KukuPaste помогает вставлять цепочки промптов по порядку: Ctrl+C собирает,
-            Ctrl+Q вставляет следующий шаг. Это не склад фраз, а повторяемый сценарий
-            работы с AI.
+          <div class="eyebrow" data-i18n="eyebrow">AI workflow packs</div>
+          <h1 data-i18n="heroTitle">Ready-made AI workflow packs for Claude, Codex, Cursor, and client work</h1>
+          <p class="lede" data-i18n="heroLead">
+            KukuPaste helps you paste prompt chains in order: Ctrl+C collects, Ctrl+Q pastes the next step. It is a repeatable AI workflow, not a folder of random snippets.
           </p>
           <div class="actions">
-            <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe">Скачать Beta RC</a>
-            <a class="btn" href="#packs">Посмотреть packs</a>
+            <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe" data-i18n="download">Download Beta RC</a>
+            <a class="btn" href="#packs" data-i18n="viewPacks">View packs</a>
           </div>
-          <div class="meta">Current RC · Windows · 3 MB · SHA-256 ниже</div>
-          <div class="badges" aria-label="Приватность">
+          <div class="meta" data-i18n="heroMeta">Current RC · Windows · 3 MB · SHA-256 below</div>
+          <div class="badges" aria-label="Privacy badges">
             <span class="badge">Local-first</span>
             <span class="badge">No cloud</span>
             <span class="badge">No account</span>
@@ -491,7 +515,7 @@
           </div>
         </div>
 
-        <aside class="workflow-panel" aria-label="Пример workflow">
+        <aside class="workflow-panel" aria-label="Workflow example">
           <div class="panel-head">
             <span>Claude / Codex workflow</span>
             <span>Ctrl+Q</span>
@@ -499,268 +523,576 @@
           <div class="steps">
             <div class="step">
               <span class="num">1</span>
-              <div>
-                <strong>Review</strong>
-                <span>Попросить AI найти баги, риски, регрессии и пропущенные тесты.</span>
-              </div>
+              <div><strong>Review</strong><span data-i18n="panelReview">Ask AI to find bugs, risks, regressions, and missing tests.</span></div>
             </div>
             <div class="step">
               <span class="num">2</span>
-              <div>
-                <strong>Fix</strong>
-                <span>Попросить минимальный безопасный фикс без лишнего рефакторинга.</span>
-              </div>
+              <div><strong>Fix</strong><span data-i18n="panelFix">Ask for the smallest safe fix without unrelated refactoring.</span></div>
             </div>
             <div class="step">
               <span class="num">3</span>
-              <div>
-                <strong>PR Summary</strong>
-                <span>Собрать понятное описание изменений и план проверки.</span>
-              </div>
+              <div><strong>PR Summary</strong><span data-i18n="panelSummary">Create a clear summary of changes and a test plan.</span></div>
             </div>
             <div class="step">
               <span class="num">4</span>
-              <div>
-                <strong>Release risk</strong>
-                <span>Проверить опасные места перед beta/RC выпуском.</span>
-              </div>
+              <div><strong>Release risk</strong><span data-i18n="panelRisk">Check dangerous areas before a beta or RC release.</span></div>
             </div>
           </div>
         </aside>
       </header>
 
       <section id="why">
-        <h2>Почему это не просто clipboard</h2>
-        <p class="section-lede">
-          Обычный clipboard помогает найти старый текст. KukuPaste помогает пройти
-          рабочий сценарий: один pack загружает несколько шагов, а Ctrl+Q вставляет
-          их по очереди в Claude, Codex, Cursor, CRM, почту или чат поддержки.
+        <h2 data-i18n="whyTitle">Why this is not just a clipboard manager</h2>
+        <p class="section-lede" data-i18n="whyLead">
+          A regular clipboard helps you find old text. KukuPaste helps you move through a work scenario: one pack loads several steps, and Ctrl+Q pastes them one by one into Claude, Codex, Cursor, CRM, email, or support chat.
         </p>
         <div class="compare">
           <div class="plain-box">
-            <h3>Один большой промпт</h3>
-            <p>Быстро становится длинным, смешивает задачи и заставляет каждый раз вручную редактировать контекст.</p>
+            <h3 data-i18n="bigPromptTitle">One huge prompt</h3>
+            <p data-i18n="bigPromptText">It becomes long, mixes tasks, and forces you to edit context manually every time.</p>
           </div>
           <div class="plain-box">
-            <h3>Workflow pack</h3>
-            <p>Делит работу на понятные шаги: review -> fix -> summary -> risk check. AI отвечает лучше, потому что задача яснее.</p>
+            <h3 data-i18n="workflowTitle">Workflow pack</h3>
+            <p data-i18n="workflowText">It splits work into clear steps: review -> fix -> summary -> risk check. AI answers better because the task is cleaner.</p>
             <div class="code-line">Review -&gt; Fix -&gt; PR Summary -&gt; Release Risk Checklist</div>
           </div>
         </div>
       </section>
 
       <section id="packs">
-        <h2>5 packs, которые закрывают платные AI-сценарии</h2>
-        <p class="section-lede">
-          Эти наборы выбраны не случайно: они лежат рядом с тем, за что люди уже платят -
-          разработка, поддержка, продажи, исследования и контент.
+        <h2 data-i18n="packsTitle">5 packs that cover paid AI workflows</h2>
+        <p class="section-lede" data-i18n="packsLead">
+          These packs were chosen because they sit next to work people already pay for: development, support, sales, research, and content.
         </p>
-
-        <div class="packs">
-          <article class="pack">
-            <div>
-              <h3>Cursor Code Review Pack</h3>
-              <p>Для проверки кода в Claude, Codex или Cursor перед тем, как выпускать новую фичу.</p>
-              <div class="pack-meta">
-                <span class="pill">Developers</span>
-                <span class="pill">AI coding</span>
-                <span class="pill">Release QA</span>
-              </div>
-            </div>
-            <div class="pack-grid">
-              <div class="mini"><b>Что решает</b><span>Находит баги, security risks, регрессии и пропущенные тесты.</span></div>
-              <div class="mini"><b>Когда использовать</b><span>После фичи, перед RC, перед PR или перед отправкой клиенту.</span></div>
-              <div class="mini"><b>Что вставляется</b><span>Review prompt, fix prompt, PR summary, release-risk checklist.</span></div>
-              <div class="mini"><b>Для кого</b><span>Разработчики, indie makers, small product teams.</span></div>
-            </div>
-            <details>
-              <summary>Показать пример</summary>
-              <div class="example">
-                <ol>
-                  <li>Ситуация: ты сделал новую фичу в Claude/Codex и хочешь проверить перед релизом.</li>
-                  <li>Ctrl+Q вставляет review prompt. Ты добавляешь: “Вот diff / файл / проблема”.</li>
-                  <li>Следующий Ctrl+Q просит минимальный безопасный фикс.</li>
-                  <li>Следующий Ctrl+Q делает PR summary и test plan.</li>
-                  <li>Результат: меньше случайных багов перед выпуском.</li>
-                </ol>
-              </div>
-            </details>
-          </article>
-
-          <article class="pack">
-            <div>
-              <h3>Support Replies Pack</h3>
-              <p>Для быстрых, спокойных и профессиональных ответов пользователям и beta feedback.</p>
-              <div class="pack-meta">
-                <span class="pill">Support</span>
-                <span class="pill">Beta users</span>
-                <span class="pill">Live chat</span>
-              </div>
-            </div>
-            <div class="pack-grid">
-              <div class="mini"><b>Что решает</b><span>Превращает сырые заметки в понятный ответ клиенту.</span></div>
-              <div class="mini"><b>Когда использовать</b><span>Когда пользователь пишет “не работает”, “не понял”, “где кнопка”.</span></div>
-              <div class="mini"><b>Что вставляется</b><span>Support reply, short chat version, follow-up, likely questions.</span></div>
-              <div class="mini"><b>Для кого</b><span>Основатель, поддержка, beta manager, small business.</span></div>
-            </div>
-            <details>
-              <summary>Показать пример</summary>
-              <div class="example">
-                <ol>
-                  <li>Ситуация: пользователь написал, что не понял импорт библиотек.</li>
-                  <li>Ctrl+Q просит AI сделать спокойный ответ с шагами.</li>
-                  <li>Следующий Ctrl+Q делает короткую live-chat версию.</li>
-                  <li>Следующий Ctrl+Q готовит follow-up, если пользователь не ответит.</li>
-                  <li>Результат: ответы выглядят профессионально, даже когда ты занят.</li>
-                </ol>
-              </div>
-            </details>
-          </article>
-
-          <article class="pack">
-            <div>
-              <h3>YouTube Script Pack</h3>
-              <p>Для превращения идеи в demo script, видео, лендинг, Telegram-посты и короткие объяснения продукта.</p>
-              <div class="pack-meta">
-                <span class="pill">Content</span>
-                <span class="pill">Demo</span>
-                <span class="pill">Launch</span>
-              </div>
-            </div>
-            <div class="pack-grid">
-              <div class="mini"><b>Что решает</b><span>Делает из сырой идеи структуру, hook, сценарий и упаковку.</span></div>
-              <div class="mini"><b>Когда использовать</b><span>Перед записью демо, лендингом, постом или объяснением продукта.</span></div>
-              <div class="mini"><b>Что вставляется</b><span>Outline, first 30 seconds, spoken script, titles, thumbnails, posts.</span></div>
-              <div class="mini"><b>Для кого</b><span>Founders, creators, marketers, solo builders.</span></div>
-            </div>
-            <details>
-              <summary>Показать пример</summary>
-              <div class="example">
-                <ol>
-                  <li>Ситуация: нужно объяснить KukuPaste за 30 секунд.</li>
-                  <li>Ctrl+Q делает outline: hook, promise, sections, ending.</li>
-                  <li>Следующий Ctrl+Q пишет первые 30 секунд без clickbait.</li>
-                  <li>Следующие шаги делают spoken script, titles/thumbnails и посты.</li>
-                  <li>Результат: один workflow даёт материал для видео, лендинга и соцсетей.</li>
-                </ol>
-              </div>
-            </details>
-          </article>
-
-          <article class="pack">
-            <div>
-              <h3>Sales Follow-up Pack</h3>
-              <p>Для аккуратных follow-up писем после разговора, демо или молчания клиента.</p>
-              <div class="pack-meta">
-                <span class="pill">Sales</span>
-                <span class="pill">B2B</span>
-                <span class="pill">Follow-up</span>
-              </div>
-            </div>
-            <div class="pack-grid">
-              <div class="mini"><b>Что решает</b><span>Помогает писать без спама и давления.</span></div>
-              <div class="mini"><b>Когда использовать</b><span>После звонка, demo, beta invite или 7 дней без ответа.</span></div>
-              <div class="mini"><b>Что вставляется</b><span>Concise follow-up, softer follow-up, objections and buying signals.</span></div>
-              <div class="mini"><b>Для кого</b><span>Founders, sales, agencies, consultants.</span></div>
-            </div>
-            <details>
-              <summary>Показать пример</summary>
-              <div class="example">
-                <ol>
-                  <li>Ситуация: ты показал продукт потенциальному клиенту.</li>
-                  <li>Ctrl+Q делает follow-up по заметкам разговора.</li>
-                  <li>Следующий шаг готовит мягкое письмо через 7 дней.</li>
-                  <li>AI выделяет objections, buying signals и лучший следующий message.</li>
-                  <li>Результат: продажи выглядят системно, а не случайно.</li>
-                </ol>
-              </div>
-            </details>
-          </article>
-
-          <article class="pack">
-            <div>
-              <h3>Research Brief Pack</h3>
-              <p>Для анализа конкурентов, решений, рисков, источников и стратегии продукта.</p>
-              <div class="pack-meta">
-                <span class="pill">Research</span>
-                <span class="pill">Strategy</span>
-                <span class="pill">Decision memo</span>
-              </div>
-            </div>
-            <div class="pack-grid">
-              <div class="mini"><b>Что решает</b><span>Собирает факты, evidence, риски и open questions.</span></div>
-              <div class="mini"><b>Когда использовать</b><span>Перед решением, публикацией, запуском или сравнением конкурентов.</span></div>
-              <div class="mini"><b>Что вставляется</b><span>Research summary, decision memo, source-check checklist.</span></div>
-              <div class="mini"><b>Для кого</b><span>Product, founders, analysts, content teams.</span></div>
-            </div>
-            <details>
-              <summary>Показать пример</summary>
-              <div class="example">
-                <ol>
-                  <li>Ситуация: ты сравниваешь KukuPaste с clipboard managers и AI tools.</li>
-                  <li>Ctrl+Q просит AI разложить материал на claims, evidence, risks.</li>
-                  <li>Следующий шаг делает decision memo с рекомендацией.</li>
-                  <li>Последний шаг собирает checklist того, что надо проверить перед публикацией.</li>
-                  <li>Результат: меньше хаоса, больше решений.</li>
-                </ol>
-              </div>
-            </details>
-          </article>
-        </div>
+        <div class="packs" id="pack-list"></div>
       </section>
 
       <section id="how">
-        <h2>Как использовать с Claude, Codex или Cursor</h2>
-        <p class="section-lede">
-          Pack работает как сценарий разговора. Ты загружаешь библиотеку в стек,
-          а потом вставляешь шаги по очереди туда, где работаешь.
+        <h2 data-i18n="howTitle">How to use it with Claude, Codex, or Cursor</h2>
+        <p class="section-lede" data-i18n="howLead">
+          A pack works like a conversation script. Load a library into the stack, then paste each step wherever you work.
         </p>
         <div class="flow-grid">
-          <div class="flow"><h3>1. Выбери pack</h3><p>Открой Library и нажми “В стек” у нужного workflow.</p></div>
-          <div class="flow"><h3>2. Вставь первый шаг</h3><p>В Claude/Codex/Cursor нажми Ctrl+Q и добавь свой контекст.</p></div>
-          <div class="flow"><h3>3. Иди по цепочке</h3><p>Следующий Ctrl+Q вставляет следующий prompt, без поиска и копирования.</p></div>
-          <div class="flow"><h3>4. Сохрани результат</h3><p>Получаешь review, fix, reply, script или brief в повторяемом формате.</p></div>
+          <div class="flow"><h3 data-i18n="flow1Title">1. Choose a pack</h3><p data-i18n="flow1Text">Open Library and click “To stack” on the workflow you need.</p></div>
+          <div class="flow"><h3 data-i18n="flow2Title">2. Paste step one</h3><p data-i18n="flow2Text">In Claude/Codex/Cursor, press Ctrl+Q and add your context.</p></div>
+          <div class="flow"><h3 data-i18n="flow3Title">3. Follow the chain</h3><p data-i18n="flow3Text">Each next Ctrl+Q inserts the next prompt without searching or copying.</p></div>
+          <div class="flow"><h3 data-i18n="flow4Title">4. Save the result</h3><p data-i18n="flow4Text">Get a review, fix, reply, script, or brief in a repeatable format.</p></div>
         </div>
       </section>
 
       <section id="security">
-        <h2>Для серьёзной работы: приватность и контроль</h2>
-        <p class="section-lede">
-          KukuPaste не заменяет AI и не отправляет данные в облако. Он помогает локально
-          держать цепочки текстов и быстро вставлять их в выбранный инструмент.
+        <h2 data-i18n="securityTitle">For serious work: privacy and control</h2>
+        <p class="section-lede" data-i18n="securityLead">
+          KukuPaste does not replace AI and does not send your data to the cloud. It keeps text workflows locally and helps paste them into the tool you choose.
         </p>
         <div class="security-grid">
-          <div class="security"><h3>Local-first</h3><p>История и библиотеки живут на устройстве пользователя.</p></div>
-          <div class="security"><h3>No cloud</h3><p>Нет облачного аккаунта и синхронизации через сервер KukuPaste.</p></div>
-          <div class="security"><h3>No account</h3><p>Beta можно проверить без регистрации и onboarding-форм.</p></div>
-          <div class="security"><h3>Encrypted state</h3><p>Состояние шифруется локально через Windows DPAPI.</p></div>
+          <div class="security"><h3>Local-first</h3><p data-i18n="secLocal">History and libraries stay on the user's device.</p></div>
+          <div class="security"><h3>No cloud</h3><p data-i18n="secCloud">No KukuPaste cloud account or server sync.</p></div>
+          <div class="security"><h3>No account</h3><p data-i18n="secAccount">The beta can be tested without registration forms.</p></div>
+          <div class="security"><h3>Encrypted state</h3><p data-i18n="secEncrypted">Local state is encrypted with Windows DPAPI.</p></div>
         </div>
       </section>
 
       <section id="download">
         <div class="download">
           <div>
-            <h2>Beta RC для проверки</h2>
-            <p class="section-lede">
-              Текущий кандидат включает workflow packs, import/export библиотек,
-              Free/Pro лимиты и локальное хранение. Установщик пока unsigned beta.
+            <h2 data-i18n="downloadTitle">Beta RC for testing</h2>
+            <p class="section-lede" data-i18n="downloadLead">
+              The current candidate includes workflow packs, library import/export, Free/Pro limits, and local-first storage. The installer is an unsigned beta build.
             </p>
             <div class="actions">
-              <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe">Скачать Beta RC</a>
-              <a class="btn" href="packs-sales-sheet.pdf">Открыть PDF sales sheet</a>
+              <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe" data-i18n="download">Download Beta RC</a>
+              <a class="btn" href="packs-sales-sheet.pdf" data-i18n="openPdf">Open PDF sales sheet</a>
             </div>
           </div>
           <div>
             <h3>SHA-256</h3>
             <div class="hash">18AB5C6AF805CCFCAD5B2742D0A57FCB8FF714154CD541B1D89FB4ACF6102011</div>
-            <p class="meta">Проверяемость installer'a для beta QA и пересылки внутри команды.</p>
+            <p class="meta" data-i18n="hashText">Installer verification for beta QA and internal sharing.</p>
           </div>
         </div>
       </section>
 
-      <footer class="footer">
+      <footer class="footer" data-i18n="footer">
         KukuPaste · Sequential paste for AI workflows · Client material v1 · 2026-06-12
       </footer>
     </main>
+
+    <script>
+      const copy = {
+        en: {
+          navPacks: "Packs",
+          navHow: "How to use",
+          navBeta: "Beta RC",
+          eyebrow: "AI workflow packs",
+          heroTitle: "Ready-made AI workflow packs for Claude, Codex, Cursor, and client work",
+          heroLead:
+            "KukuPaste helps you paste prompt chains in order: Ctrl+C collects, Ctrl+Q pastes the next step. It is a repeatable AI workflow, not a folder of random snippets.",
+          download: "Download Beta RC",
+          viewPacks: "View packs",
+          heroMeta: "Current RC · Windows · 3 MB · SHA-256 below",
+          panelReview: "Ask AI to find bugs, risks, regressions, and missing tests.",
+          panelFix: "Ask for the smallest safe fix without unrelated refactoring.",
+          panelSummary: "Create a clear summary of changes and a test plan.",
+          panelRisk: "Check dangerous areas before a beta or RC release.",
+          whyTitle: "Why this is not just a clipboard manager",
+          whyLead:
+            "A regular clipboard helps you find old text. KukuPaste helps you move through a work scenario: one pack loads several steps, and Ctrl+Q pastes them one by one into Claude, Codex, Cursor, CRM, email, or support chat.",
+          bigPromptTitle: "One huge prompt",
+          bigPromptText: "It becomes long, mixes tasks, and forces you to edit context manually every time.",
+          workflowTitle: "Workflow pack",
+          workflowText:
+            "It splits work into clear steps: review -> fix -> summary -> risk check. AI answers better because the task is cleaner.",
+          packsTitle: "5 packs that cover paid AI workflows",
+          packsLead:
+            "These packs were chosen because they sit next to work people already pay for: development, support, sales, research, and content.",
+          howTitle: "How to use it with Claude, Codex, or Cursor",
+          howLead: "A pack works like a conversation script. Load a library into the stack, then paste each step wherever you work.",
+          flow1Title: "1. Choose a pack",
+          flow1Text: "Open Library and click “To stack” on the workflow you need.",
+          flow2Title: "2. Paste step one",
+          flow2Text: "In Claude/Codex/Cursor, press Ctrl+Q and add your context.",
+          flow3Title: "3. Follow the chain",
+          flow3Text: "Each next Ctrl+Q inserts the next prompt without searching or copying.",
+          flow4Title: "4. Save the result",
+          flow4Text: "Get a review, fix, reply, script, or brief in a repeatable format.",
+          securityTitle: "For serious work: privacy and control",
+          securityLead:
+            "KukuPaste does not replace AI and does not send your data to the cloud. It keeps text workflows locally and helps paste them into the tool you choose.",
+          secLocal: "History and libraries stay on the user's device.",
+          secCloud: "No KukuPaste cloud account or server sync.",
+          secAccount: "The beta can be tested without registration forms.",
+          secEncrypted: "Local state is encrypted with Windows DPAPI.",
+          downloadTitle: "Beta RC for testing",
+          downloadLead:
+            "The current candidate includes workflow packs, library import/export, Free/Pro limits, and local-first storage. The installer is an unsigned beta build.",
+          openPdf: "Open PDF sales sheet",
+          hashText: "Installer verification for beta QA and internal sharing.",
+          footer: "KukuPaste · Sequential paste for AI workflows · Client material v1 · 2026-06-12",
+          labels: {
+            solves: "What it solves",
+            when: "When to use",
+            inserts: "What Ctrl+Q inserts",
+            forWhom: "Useful for",
+            example: "Show example",
+          },
+          packs: [
+            {
+              title: "Cursor Code Review Pack",
+              intro: "For checking code in Claude, Codex, or Cursor before releasing a feature.",
+              tags: ["Developers", "AI coding", "Release QA"],
+              solves: "Finds bugs, security risks, regressions, and missing tests.",
+              when: "After a feature, before an RC, before a PR, or before sending work to a client.",
+              inserts: "Review prompt, fix prompt, PR summary, release-risk checklist.",
+              forWhom: "Developers, indie makers, small product teams.",
+              example: [
+                "You built a feature in Claude/Codex and want to check it before release.",
+                "Ctrl+Q inserts the review prompt. You add: “Here is the diff / file / problem.”",
+                "The next Ctrl+Q asks for the smallest safe fix.",
+                "The next Ctrl+Q creates a PR summary and test plan.",
+                "Result: fewer accidental bugs before shipping.",
+              ],
+            },
+            {
+              title: "Support Replies Pack",
+              intro: "For fast, calm, professional replies to users and beta feedback.",
+              tags: ["Support", "Beta users", "Live chat"],
+              solves: "Turns rough notes into a clear customer reply.",
+              when: "When a user writes: “it does not work”, “I do not understand”, or “where is the button?”",
+              inserts: "Support reply, short chat version, follow-up, likely questions.",
+              forWhom: "Founders, support, beta managers, small business.",
+              example: [
+                "A user says they do not understand library import.",
+                "Ctrl+Q asks AI to write a calm reply with steps.",
+                "The next Ctrl+Q creates a short live-chat version.",
+                "The next Ctrl+Q prepares a follow-up if the user does not answer.",
+                "Result: your support sounds professional even when you are busy.",
+              ],
+            },
+            {
+              title: "YouTube Script Pack",
+              intro: "For turning an idea into a demo script, video, landing page, Telegram post, or short product explanation.",
+              tags: ["Content", "Demo", "Launch"],
+              solves: "Turns a raw idea into an outline, hook, script, and packaging.",
+              when: "Before recording a demo, writing a landing page, posting, or explaining a product.",
+              inserts: "Outline, first 30 seconds, spoken script, titles, thumbnails, posts.",
+              forWhom: "Founders, creators, marketers, solo builders.",
+              example: [
+                "You need to explain KukuPaste in 30 seconds.",
+                "Ctrl+Q creates an outline: hook, promise, sections, ending.",
+                "The next Ctrl+Q writes the first 30 seconds without clickbait.",
+                "The next steps create a spoken script, titles/thumbnails, and posts.",
+                "Result: one workflow gives you material for video, landing, and social posts.",
+              ],
+            },
+            {
+              title: "Sales Follow-up Pack",
+              intro: "For polite follow-up emails after a call, demo, or silent prospect.",
+              tags: ["Sales", "B2B", "Follow-up"],
+              solves: "Helps you write without spam or pressure.",
+              when: "After a call, demo, beta invite, or 7 days without a reply.",
+              inserts: "Concise follow-up, softer follow-up, objections and buying signals.",
+              forWhom: "Founders, sales, agencies, consultants.",
+              example: [
+                "You showed the product to a potential customer.",
+                "Ctrl+Q writes a follow-up from your meeting notes.",
+                "The next step prepares a softer email after 7 days.",
+                "AI extracts objections, buying signals, and the best next message.",
+                "Result: sales become systematic, not random.",
+              ],
+            },
+            {
+              title: "Research Brief Pack",
+              intro: "For analyzing competitors, decisions, risks, sources, and product strategy.",
+              tags: ["Research", "Strategy", "Decision memo"],
+              solves: "Organizes facts, evidence, risks, and open questions.",
+              when: "Before a decision, publication, launch, or competitor comparison.",
+              inserts: "Research summary, decision memo, source-check checklist.",
+              forWhom: "Product teams, founders, analysts, content teams.",
+              example: [
+                "You compare KukuPaste with clipboard managers and AI tools.",
+                "Ctrl+Q asks AI to split material into claims, evidence, risks.",
+                "The next step creates a decision memo with a recommendation.",
+                "The final step creates a checklist of what to verify before publishing.",
+                "Result: less chaos, better decisions.",
+              ],
+            },
+          ],
+        },
+        ru: {
+          navPacks: "Packs",
+          navHow: "Как использовать",
+          navBeta: "Beta RC",
+          eyebrow: "AI workflow packs",
+          heroTitle: "Готовые AI workflow packs для Claude, Codex, Cursor и клиентской работы",
+          heroLead:
+            "KukuPaste помогает вставлять цепочки промптов по порядку: Ctrl+C собирает, Ctrl+Q вставляет следующий шаг. Это повторяемый сценарий работы с AI, а не папка случайных фраз.",
+          download: "Скачать Beta RC",
+          viewPacks: "Посмотреть packs",
+          heroMeta: "Current RC · Windows · 3 MB · SHA-256 ниже",
+          panelReview: "Попросить AI найти баги, риски, регрессии и пропущенные тесты.",
+          panelFix: "Попросить минимальный безопасный фикс без лишнего рефакторинга.",
+          panelSummary: "Собрать понятное описание изменений и план проверки.",
+          panelRisk: "Проверить опасные места перед beta/RC выпуском.",
+          whyTitle: "Почему это не просто clipboard manager",
+          whyLead:
+            "Обычный clipboard помогает найти старый текст. KukuPaste помогает пройти рабочий сценарий: один pack загружает несколько шагов, а Ctrl+Q вставляет их по очереди в Claude, Codex, Cursor, CRM, почту или чат поддержки.",
+          bigPromptTitle: "Один большой промпт",
+          bigPromptText: "Быстро становится длинным, смешивает задачи и заставляет каждый раз вручную редактировать контекст.",
+          workflowTitle: "Workflow pack",
+          workflowText:
+            "Делит работу на понятные шаги: review -> fix -> summary -> risk check. AI отвечает лучше, потому что задача яснее.",
+          packsTitle: "5 packs, которые закрывают платные AI-сценарии",
+          packsLead:
+            "Эти наборы выбраны не случайно: они лежат рядом с тем, за что люди уже платят - разработка, поддержка, продажи, исследования и контент.",
+          howTitle: "Как использовать с Claude, Codex или Cursor",
+          howLead:
+            "Pack работает как сценарий разговора. Ты загружаешь библиотеку в стек, а потом вставляешь шаги по очереди туда, где работаешь.",
+          flow1Title: "1. Выбери pack",
+          flow1Text: "Открой Library и нажми “В стек” у нужного workflow.",
+          flow2Title: "2. Вставь первый шаг",
+          flow2Text: "В Claude/Codex/Cursor нажми Ctrl+Q и добавь свой контекст.",
+          flow3Title: "3. Иди по цепочке",
+          flow3Text: "Следующий Ctrl+Q вставляет следующий prompt, без поиска и копирования.",
+          flow4Title: "4. Сохрани результат",
+          flow4Text: "Получаешь review, fix, reply, script или brief в повторяемом формате.",
+          securityTitle: "Для серьёзной работы: приватность и контроль",
+          securityLead:
+            "KukuPaste не заменяет AI и не отправляет данные в облако. Он помогает локально держать цепочки текстов и быстро вставлять их в выбранный инструмент.",
+          secLocal: "История и библиотеки живут на устройстве пользователя.",
+          secCloud: "Нет облачного аккаунта и синхронизации через сервер KukuPaste.",
+          secAccount: "Beta можно проверить без регистрации и onboarding-форм.",
+          secEncrypted: "Состояние шифруется локально через Windows DPAPI.",
+          downloadTitle: "Beta RC для проверки",
+          downloadLead:
+            "Текущий кандидат включает workflow packs, import/export библиотек, Free/Pro лимиты и локальное хранение. Установщик пока unsigned beta.",
+          openPdf: "Открыть PDF sales sheet",
+          hashText: "Проверяемость installer'a для beta QA и пересылки внутри команды.",
+          footer: "KukuPaste · Sequential paste for AI workflows · Client material v1 · 2026-06-12",
+          labels: {
+            solves: "Что решает",
+            when: "Когда использовать",
+            inserts: "Что вставляется по Ctrl+Q",
+            forWhom: "Для кого полезно",
+            example: "Показать пример",
+          },
+          packs: [
+            {
+              title: "Cursor Code Review Pack",
+              intro: "Для проверки кода в Claude, Codex или Cursor перед тем, как выпускать новую фичу.",
+              tags: ["Developers", "AI coding", "Release QA"],
+              solves: "Находит баги, security risks, регрессии и пропущенные тесты.",
+              when: "После фичи, перед RC, перед PR или перед отправкой клиенту.",
+              inserts: "Review prompt, fix prompt, PR summary, release-risk checklist.",
+              forWhom: "Разработчики, indie makers, small product teams.",
+              example: [
+                "Ты сделал новую фичу в Claude/Codex и хочешь проверить перед релизом.",
+                "Ctrl+Q вставляет review prompt. Ты добавляешь: “Вот diff / файл / проблема”.",
+                "Следующий Ctrl+Q просит минимальный безопасный фикс.",
+                "Следующий Ctrl+Q делает PR summary и test plan.",
+                "Результат: меньше случайных багов перед выпуском.",
+              ],
+            },
+            {
+              title: "Support Replies Pack",
+              intro: "Для быстрых, спокойных и профессиональных ответов пользователям и beta feedback.",
+              tags: ["Support", "Beta users", "Live chat"],
+              solves: "Превращает сырые заметки в понятный ответ клиенту.",
+              when: "Когда пользователь пишет “не работает”, “не понял”, “где кнопка”.",
+              inserts: "Support reply, short chat version, follow-up, likely questions.",
+              forWhom: "Основатель, поддержка, beta manager, small business.",
+              example: [
+                "Пользователь написал, что не понял импорт библиотек.",
+                "Ctrl+Q просит AI сделать спокойный ответ с шагами.",
+                "Следующий Ctrl+Q делает короткую live-chat версию.",
+                "Следующий Ctrl+Q готовит follow-up, если пользователь не ответит.",
+                "Результат: ответы выглядят профессионально, даже когда ты занят.",
+              ],
+            },
+            {
+              title: "YouTube Script Pack",
+              intro: "Для превращения идеи в demo script, видео, лендинг, Telegram-посты и короткие объяснения продукта.",
+              tags: ["Content", "Demo", "Launch"],
+              solves: "Делает из сырой идеи структуру, hook, сценарий и упаковку.",
+              when: "Перед записью демо, лендингом, постом или объяснением продукта.",
+              inserts: "Outline, first 30 seconds, spoken script, titles, thumbnails, posts.",
+              forWhom: "Founders, creators, marketers, solo builders.",
+              example: [
+                "Нужно объяснить KukuPaste за 30 секунд.",
+                "Ctrl+Q делает outline: hook, promise, sections, ending.",
+                "Следующий Ctrl+Q пишет первые 30 секунд без clickbait.",
+                "Следующие шаги делают spoken script, titles/thumbnails и посты.",
+                "Результат: один workflow даёт материал для видео, лендинга и соцсетей.",
+              ],
+            },
+            {
+              title: "Sales Follow-up Pack",
+              intro: "Для аккуратных follow-up писем после разговора, демо или молчания клиента.",
+              tags: ["Sales", "B2B", "Follow-up"],
+              solves: "Помогает писать без спама и давления.",
+              when: "После звонка, demo, beta invite или 7 дней без ответа.",
+              inserts: "Concise follow-up, softer follow-up, objections and buying signals.",
+              forWhom: "Founders, sales, agencies, consultants.",
+              example: [
+                "Ты показал продукт потенциальному клиенту.",
+                "Ctrl+Q делает follow-up по заметкам разговора.",
+                "Следующий шаг готовит мягкое письмо через 7 дней.",
+                "AI выделяет objections, buying signals и лучший следующий message.",
+                "Результат: продажи выглядят системно, а не случайно.",
+              ],
+            },
+            {
+              title: "Research Brief Pack",
+              intro: "Для анализа конкурентов, решений, рисков, источников и стратегии продукта.",
+              tags: ["Research", "Strategy", "Decision memo"],
+              solves: "Собирает факты, evidence, риски и open questions.",
+              when: "Перед решением, публикацией, запуском или сравнением конкурентов.",
+              inserts: "Research summary, decision memo, source-check checklist.",
+              forWhom: "Product, founders, analysts, content teams.",
+              example: [
+                "Ты сравниваешь KukuPaste с clipboard managers и AI tools.",
+                "Ctrl+Q просит AI разложить материал на claims, evidence, risks.",
+                "Следующий шаг делает decision memo с рекомендацией.",
+                "Последний шаг собирает checklist того, что надо проверить перед публикацией.",
+                "Результат: меньше хаоса, больше решений.",
+              ],
+            },
+          ],
+        },
+        es: {
+          navPacks: "Packs",
+          navHow: "Cómo usar",
+          navBeta: "Beta RC",
+          eyebrow: "AI workflow packs",
+          heroTitle: "Packs de workflows para Claude, Codex, Cursor y trabajo con clientes",
+          heroLead:
+            "KukuPaste te ayuda a pegar cadenas de prompts en orden: Ctrl+C recoge textos, Ctrl+Q pega el siguiente paso. Es un workflow repetible con IA, no una carpeta de textos sueltos.",
+          download: "Descargar Beta RC",
+          viewPacks: "Ver packs",
+          heroMeta: "Current RC · Windows · 3 MB · SHA-256 abajo",
+          panelReview: "Pide a la IA encontrar bugs, riesgos, regresiones y tests faltantes.",
+          panelFix: "Pide el arreglo seguro más pequeño, sin refactors innecesarios.",
+          panelSummary: "Crea un resumen claro de cambios y un plan de pruebas.",
+          panelRisk: "Revisa las áreas peligrosas antes de una beta o release candidate.",
+          whyTitle: "Por qué no es solo un clipboard manager",
+          whyLead:
+            "Un clipboard normal te ayuda a encontrar textos antiguos. KukuPaste te ayuda a seguir un escenario de trabajo: un pack carga varios pasos y Ctrl+Q los pega uno por uno en Claude, Codex, Cursor, CRM, email o soporte.",
+          bigPromptTitle: "Un prompt gigante",
+          bigPromptText: "Se vuelve largo, mezcla tareas y te obliga a editar el contexto manualmente cada vez.",
+          workflowTitle: "Workflow pack",
+          workflowText:
+            "Divide el trabajo en pasos claros: review -> fix -> summary -> risk check. La IA responde mejor porque la tarea está más limpia.",
+          packsTitle: "5 packs para workflows de IA con valor de pago",
+          packsLead:
+            "Estos packs cubren trabajos por los que la gente ya paga: desarrollo, soporte, ventas, investigación y contenido.",
+          howTitle: "Cómo usarlo con Claude, Codex o Cursor",
+          howLead: "Un pack funciona como guion de conversación. Cargas una biblioteca al stack y pegas cada paso donde trabajas.",
+          flow1Title: "1. Elige un pack",
+          flow1Text: "Abre Library y pulsa “To stack” en el workflow que necesitas.",
+          flow2Title: "2. Pega el primer paso",
+          flow2Text: "En Claude/Codex/Cursor presiona Ctrl+Q y agrega tu contexto.",
+          flow3Title: "3. Sigue la cadena",
+          flow3Text: "Cada Ctrl+Q inserta el siguiente prompt sin buscar ni copiar.",
+          flow4Title: "4. Guarda el resultado",
+          flow4Text: "Obtienes un review, fix, reply, script o brief en formato repetible.",
+          securityTitle: "Para trabajo serio: privacidad y control",
+          securityLead:
+            "KukuPaste no reemplaza la IA y no envía tus datos a la nube. Mantiene workflows de texto localmente y ayuda a pegarlos en la herramienta que elijas.",
+          secLocal: "El historial y las bibliotecas quedan en el dispositivo del usuario.",
+          secCloud: "No hay cuenta cloud de KukuPaste ni sincronización con servidor.",
+          secAccount: "La beta se puede probar sin registro ni formularios de onboarding.",
+          secEncrypted: "El estado local se cifra con Windows DPAPI.",
+          downloadTitle: "Beta RC para probar",
+          downloadLead:
+            "El candidato actual incluye workflow packs, import/export de bibliotecas, límites Free/Pro y almacenamiento local-first. El instalador es una beta sin firma.",
+          openPdf: "Abrir PDF sales sheet",
+          hashText: "Verificación del instalador para beta QA y uso interno.",
+          footer: "KukuPaste · Sequential paste for AI workflows · Client material v1 · 2026-06-12",
+          labels: {
+            solves: "Qué resuelve",
+            when: "Cuándo usarlo",
+            inserts: "Qué inserta Ctrl+Q",
+            forWhom: "Para quién",
+            example: "Mostrar ejemplo",
+          },
+          packs: [
+            {
+              title: "Cursor Code Review Pack",
+              intro: "Para revisar código en Claude, Codex o Cursor antes de lanzar una feature.",
+              tags: ["Developers", "AI coding", "Release QA"],
+              solves: "Encuentra bugs, riesgos de seguridad, regresiones y tests faltantes.",
+              when: "Después de una feature, antes de un RC, antes de un PR o antes de enviar a un cliente.",
+              inserts: "Review prompt, fix prompt, PR summary, release-risk checklist.",
+              forWhom: "Developers, indie makers, small product teams.",
+              example: [
+                "Creaste una feature en Claude/Codex y quieres revisarla antes del release.",
+                "Ctrl+Q inserta el review prompt. Agregas: “Aquí está el diff / archivo / problema”.",
+                "El siguiente Ctrl+Q pide el fix seguro más pequeño.",
+                "El siguiente Ctrl+Q crea PR summary y test plan.",
+                "Resultado: menos bugs accidentales antes de publicar.",
+              ],
+            },
+            {
+              title: "Support Replies Pack",
+              intro: "Para respuestas rápidas, tranquilas y profesionales a usuarios y feedback de beta.",
+              tags: ["Support", "Beta users", "Live chat"],
+              solves: "Convierte notas desordenadas en una respuesta clara para el cliente.",
+              when: "Cuando un usuario dice “no funciona”, “no entiendo” o “dónde está el botón”.",
+              inserts: "Support reply, short chat version, follow-up, likely questions.",
+              forWhom: "Founders, soporte, beta managers, small business.",
+              example: [
+                "Un usuario no entiende cómo importar bibliotecas.",
+                "Ctrl+Q pide a la IA una respuesta tranquila con pasos.",
+                "El siguiente Ctrl+Q crea una versión corta para chat.",
+                "El siguiente Ctrl+Q prepara follow-up si el usuario no responde.",
+                "Resultado: soporte profesional incluso cuando estás ocupado.",
+              ],
+            },
+            {
+              title: "YouTube Script Pack",
+              intro: "Para convertir una idea en demo script, video, landing, post de Telegram o explicación corta del producto.",
+              tags: ["Content", "Demo", "Launch"],
+              solves: "Convierte una idea cruda en outline, hook, script y packaging.",
+              when: "Antes de grabar un demo, escribir una landing, publicar o explicar un producto.",
+              inserts: "Outline, first 30 seconds, spoken script, titles, thumbnails, posts.",
+              forWhom: "Founders, creators, marketers, solo builders.",
+              example: [
+                "Necesitas explicar KukuPaste en 30 segundos.",
+                "Ctrl+Q crea outline: hook, promise, sections, ending.",
+                "El siguiente Ctrl+Q escribe los primeros 30 segundos sin clickbait.",
+                "Los siguientes pasos crean script hablado, titles/thumbnails y posts.",
+                "Resultado: un workflow da material para video, landing y redes.",
+              ],
+            },
+            {
+              title: "Sales Follow-up Pack",
+              intro: "Para emails de follow-up después de una llamada, demo o silencio del cliente.",
+              tags: ["Sales", "B2B", "Follow-up"],
+              solves: "Ayuda a escribir sin spam ni presión.",
+              when: "Después de una llamada, demo, beta invite o 7 días sin respuesta.",
+              inserts: "Concise follow-up, softer follow-up, objections and buying signals.",
+              forWhom: "Founders, sales, agencies, consultants.",
+              example: [
+                "Mostraste el producto a un potencial cliente.",
+                "Ctrl+Q crea follow-up desde tus notas de reunión.",
+                "El siguiente paso prepara un email más suave después de 7 días.",
+                "La IA extrae objections, buying signals y el mejor próximo mensaje.",
+                "Resultado: ventas más sistemáticas y menos improvisadas.",
+              ],
+            },
+            {
+              title: "Research Brief Pack",
+              intro: "Para analizar competidores, decisiones, riesgos, fuentes y estrategia de producto.",
+              tags: ["Research", "Strategy", "Decision memo"],
+              solves: "Organiza facts, evidence, risks y open questions.",
+              when: "Antes de una decisión, publicación, lanzamiento o comparación de competidores.",
+              inserts: "Research summary, decision memo, source-check checklist.",
+              forWhom: "Product teams, founders, analysts, content teams.",
+              example: [
+                "Comparas KukuPaste con clipboard managers y AI tools.",
+                "Ctrl+Q pide a la IA separar material en claims, evidence, risks.",
+                "El siguiente paso crea un decision memo con recomendación.",
+                "El paso final crea checklist de lo que hay que verificar antes de publicar.",
+                "Resultado: menos caos y mejores decisiones.",
+              ],
+            },
+          ],
+        },
+      };
+
+      function renderPacks(lang) {
+        const data = copy[lang];
+        const labels = data.labels;
+        const root = document.getElementById("pack-list");
+        root.innerHTML = data.packs
+          .map(
+            (pack) => `
+              <article class="pack">
+                <div>
+                  <h3>${pack.title}</h3>
+                  <p>${pack.intro}</p>
+                  <div class="pack-meta">${pack.tags.map((tag) => `<span class="pill">${tag}</span>`).join("")}</div>
+                </div>
+                <div class="pack-grid">
+                  <div class="mini"><b>${labels.solves}</b><span>${pack.solves}</span></div>
+                  <div class="mini"><b>${labels.when}</b><span>${pack.when}</span></div>
+                  <div class="mini"><b>${labels.inserts}</b><span>${pack.inserts}</span></div>
+                  <div class="mini"><b>${labels.forWhom}</b><span>${pack.forWhom}</span></div>
+                </div>
+                <details>
+                  <summary>${labels.example}</summary>
+                  <div class="example"><ol>${pack.example.map((item) => `<li>${item}</li>`).join("")}</ol></div>
+                </details>
+              </article>`
+          )
+          .join("");
+      }
+
+      function setLanguage(lang) {
+        const selected = copy[lang] ? lang : "en";
+        document.documentElement.lang = selected;
+        document.querySelectorAll("[data-i18n]").forEach((node) => {
+          const key = node.getAttribute("data-i18n");
+          if (copy[selected][key]) node.textContent = copy[selected][key];
+        });
+        document.querySelectorAll("[data-lang]").forEach((button) => {
+          button.classList.toggle("active", button.getAttribute("data-lang") === selected);
+        });
+        renderPacks(selected);
+        localStorage.setItem("kukupaste-page-lang", selected);
+      }
+
+      document.querySelectorAll("[data-lang]").forEach((button) => {
+        button.addEventListener("click", () => setLanguage(button.getAttribute("data-lang")));
+      });
+
+      const savedLang = localStorage.getItem("kukupaste-page-lang");
+      const browserLang = navigator.language && navigator.language.toLowerCase().startsWith("ru")
+        ? "ru"
+        : navigator.language && navigator.language.toLowerCase().startsWith("es")
+          ? "es"
+          : "en";
+      setLanguage(savedLang || browserLang);
+    </script>
   </body>
 </html>
