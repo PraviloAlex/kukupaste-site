@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KukuPaste Packs for AI Workflows</title>
+    <meta
+      name="description"
+      content="Готовые workflow packs для Claude, Codex, Cursor, поддержки, продаж, исследований и контента."
+    />
+    <style>
+      :root {
+        --bg: #101010;
+        --panel: #181818;
+        --panel-2: #202020;
+        --text: #f6f1e9;
+        --soft: rgba(246, 241, 233, 0.74);
+        --muted: rgba(246, 241, 233, 0.52);
+        --line: rgba(246, 241, 233, 0.12);
+        --line-strong: rgba(242, 91, 35, 0.56);
+        --orange: #f25b23;
+        --orange-2: #ff7a3d;
+        --green: #67c587;
+        --blue: #7fb0ff;
+        --font-ui: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+        --font-mono: "Cascadia Mono", "Space Mono", Consolas, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-ui);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 24px 72px;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 68px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+      }
+
+      .mark {
+        width: 22px;
+        height: 22px;
+        border: 4px solid var(--orange);
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .mark::after {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        inset: 4px;
+        margin: auto;
+        border-radius: 2px;
+        background: var(--orange);
+        content: "";
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: 48px;
+        align-items: center;
+        padding-bottom: 72px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 18px;
+        color: var(--orange-2);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--orange);
+        content: "";
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0 0 20px;
+        font-size: clamp(42px, 6vw, 70px);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .lede {
+        max-width: 640px;
+        margin: 0 0 28px;
+        color: var(--soft);
+        font-size: 19px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--text);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .btn.primary {
+        border-color: var(--orange);
+        background: var(--orange);
+        color: #120d0a;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 22px;
+      }
+
+      .badge {
+        padding: 8px 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--soft);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .workflow-panel {
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        background: var(--panel);
+        overflow: hidden;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 18px 0;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      .steps {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #111;
+      }
+
+      .num {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(242, 91, 35, 0.55);
+        border-radius: 8px;
+        color: var(--orange-2);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .step strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .step span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      section {
+        padding: 70px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: clamp(30px, 4vw, 44px);
+        line-height: 1.12;
+      }
+
+      .section-lede {
+        max-width: 720px;
+        margin: 0 0 30px;
+        color: var(--soft);
+        font-size: 18px;
+      }
+
+      .compare {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .plain-box {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .plain-box h3,
+      .pack h3,
+      .security h3,
+      .flow h3 {
+        margin: 0 0 12px;
+        font-size: 19px;
+      }
+
+      .plain-box p,
+      .pack p,
+      .security p,
+      .flow p {
+        margin: 0;
+        color: var(--soft);
+      }
+
+      .code-line {
+        margin-top: 16px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #0c0c0c;
+        color: var(--green);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        overflow-wrap: anywhere;
+      }
+
+      .packs {
+        display: grid;
+        gap: 16px;
+      }
+
+      .pack {
+        display: grid;
+        grid-template-columns: 0.82fr 1.18fr;
+        gap: 18px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .pack-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .pill {
+        padding: 6px 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 11px;
+      }
+
+      .pack-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .mini {
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #101010;
+      }
+
+      .mini b {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--orange-2);
+        font-size: 13px;
+      }
+
+      .mini span {
+        color: var(--soft);
+        font-size: 14px;
+      }
+
+      details {
+        grid-column: 1 / -1;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #111;
+      }
+
+      summary {
+        padding: 14px 16px;
+        color: var(--text);
+        cursor: pointer;
+        font-weight: 800;
+      }
+
+      .example {
+        padding: 0 16px 16px;
+      }
+
+      .example ol {
+        margin: 0;
+        padding-left: 20px;
+        color: var(--soft);
+      }
+
+      .example li + li {
+        margin-top: 7px;
+      }
+
+      .security-grid,
+      .flow-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .security,
+      .flow {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .download {
+        display: grid;
+        grid-template-columns: 1fr 0.7fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .hash {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #0c0c0c;
+        color: var(--blue);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        overflow-wrap: anywhere;
+      }
+
+      .footer {
+        padding-top: 28px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .pack,
+        .download {
+          grid-template-columns: 1fr;
+        }
+
+        .compare,
+        .pack-grid,
+        .security-grid,
+        .flow-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          margin-bottom: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav" aria-label="Навигация">
+        <div class="brand"><span class="mark" aria-hidden="true"></span>KukuPaste</div>
+        <div class="nav-links">
+          <a href="#packs">Packs</a>
+          <a href="#how">Как использовать</a>
+          <a href="#download">Beta RC</a>
+        </div>
+      </nav>
+
+      <header class="hero">
+        <div>
+          <div class="eyebrow">AI workflow packs</div>
+          <h1>Готовые AI workflow packs для Claude, Codex, Cursor и клиентской работы</h1>
+          <p class="lede">
+            KukuPaste помогает вставлять цепочки промптов по порядку: Ctrl+C собирает,
+            Ctrl+Q вставляет следующий шаг. Это не склад фраз, а повторяемый сценарий
+            работы с AI.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe">Скачать Beta RC</a>
+            <a class="btn" href="#packs">Посмотреть packs</a>
+          </div>
+          <div class="meta">Current RC · Windows · 3 MB · SHA-256 ниже</div>
+          <div class="badges" aria-label="Приватность">
+            <span class="badge">Local-first</span>
+            <span class="badge">No cloud</span>
+            <span class="badge">No account</span>
+            <span class="badge">Encrypted state</span>
+          </div>
+        </div>
+
+        <aside class="workflow-panel" aria-label="Пример workflow">
+          <div class="panel-head">
+            <span>Claude / Codex workflow</span>
+            <span>Ctrl+Q</span>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <span class="num">1</span>
+              <div>
+                <strong>Review</strong>
+                <span>Попросить AI найти баги, риски, регрессии и пропущенные тесты.</span>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num">2</span>
+              <div>
+                <strong>Fix</strong>
+                <span>Попросить минимальный безопасный фикс без лишнего рефакторинга.</span>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num">3</span>
+              <div>
+                <strong>PR Summary</strong>
+                <span>Собрать понятное описание изменений и план проверки.</span>
+              </div>
+            </div>
+            <div class="step">
+              <span class="num">4</span>
+              <div>
+                <strong>Release risk</strong>
+                <span>Проверить опасные места перед beta/RC выпуском.</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </header>
+
+      <section id="why">
+        <h2>Почему это не просто clipboard</h2>
+        <p class="section-lede">
+          Обычный clipboard помогает найти старый текст. KukuPaste помогает пройти
+          рабочий сценарий: один pack загружает несколько шагов, а Ctrl+Q вставляет
+          их по очереди в Claude, Codex, Cursor, CRM, почту или чат поддержки.
+        </p>
+        <div class="compare">
+          <div class="plain-box">
+            <h3>Один большой промпт</h3>
+            <p>Быстро становится длинным, смешивает задачи и заставляет каждый раз вручную редактировать контекст.</p>
+          </div>
+          <div class="plain-box">
+            <h3>Workflow pack</h3>
+            <p>Делит работу на понятные шаги: review -> fix -> summary -> risk check. AI отвечает лучше, потому что задача яснее.</p>
+            <div class="code-line">Review -&gt; Fix -&gt; PR Summary -&gt; Release Risk Checklist</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="packs">
+        <h2>5 packs, которые закрывают платные AI-сценарии</h2>
+        <p class="section-lede">
+          Эти наборы выбраны не случайно: они лежат рядом с тем, за что люди уже платят -
+          разработка, поддержка, продажи, исследования и контент.
+        </p>
+
+        <div class="packs">
+          <article class="pack">
+            <div>
+              <h3>Cursor Code Review Pack</h3>
+              <p>Для проверки кода в Claude, Codex или Cursor перед тем, как выпускать новую фичу.</p>
+              <div class="pack-meta">
+                <span class="pill">Developers</span>
+                <span class="pill">AI coding</span>
+                <span class="pill">Release QA</span>
+              </div>
+            </div>
+            <div class="pack-grid">
+              <div class="mini"><b>Что решает</b><span>Находит баги, security risks, регрессии и пропущенные тесты.</span></div>
+              <div class="mini"><b>Когда использовать</b><span>После фичи, перед RC, перед PR или перед отправкой клиенту.</span></div>
+              <div class="mini"><b>Что вставляется</b><span>Review prompt, fix prompt, PR summary, release-risk checklist.</span></div>
+              <div class="mini"><b>Для кого</b><span>Разработчики, indie makers, small product teams.</span></div>
+            </div>
+            <details>
+              <summary>Показать пример</summary>
+              <div class="example">
+                <ol>
+                  <li>Ситуация: ты сделал новую фичу в Claude/Codex и хочешь проверить перед релизом.</li>
+                  <li>Ctrl+Q вставляет review prompt. Ты добавляешь: “Вот diff / файл / проблема”.</li>
+                  <li>Следующий Ctrl+Q просит минимальный безопасный фикс.</li>
+                  <li>Следующий Ctrl+Q делает PR summary и test plan.</li>
+                  <li>Результат: меньше случайных багов перед выпуском.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="pack">
+            <div>
+              <h3>Support Replies Pack</h3>
+              <p>Для быстрых, спокойных и профессиональных ответов пользователям и beta feedback.</p>
+              <div class="pack-meta">
+                <span class="pill">Support</span>
+                <span class="pill">Beta users</span>
+                <span class="pill">Live chat</span>
+              </div>
+            </div>
+            <div class="pack-grid">
+              <div class="mini"><b>Что решает</b><span>Превращает сырые заметки в понятный ответ клиенту.</span></div>
+              <div class="mini"><b>Когда использовать</b><span>Когда пользователь пишет “не работает”, “не понял”, “где кнопка”.</span></div>
+              <div class="mini"><b>Что вставляется</b><span>Support reply, short chat version, follow-up, likely questions.</span></div>
+              <div class="mini"><b>Для кого</b><span>Основатель, поддержка, beta manager, small business.</span></div>
+            </div>
+            <details>
+              <summary>Показать пример</summary>
+              <div class="example">
+                <ol>
+                  <li>Ситуация: пользователь написал, что не понял импорт библиотек.</li>
+                  <li>Ctrl+Q просит AI сделать спокойный ответ с шагами.</li>
+                  <li>Следующий Ctrl+Q делает короткую live-chat версию.</li>
+                  <li>Следующий Ctrl+Q готовит follow-up, если пользователь не ответит.</li>
+                  <li>Результат: ответы выглядят профессионально, даже когда ты занят.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="pack">
+            <div>
+              <h3>YouTube Script Pack</h3>
+              <p>Для превращения идеи в demo script, видео, лендинг, Telegram-посты и короткие объяснения продукта.</p>
+              <div class="pack-meta">
+                <span class="pill">Content</span>
+                <span class="pill">Demo</span>
+                <span class="pill">Launch</span>
+              </div>
+            </div>
+            <div class="pack-grid">
+              <div class="mini"><b>Что решает</b><span>Делает из сырой идеи структуру, hook, сценарий и упаковку.</span></div>
+              <div class="mini"><b>Когда использовать</b><span>Перед записью демо, лендингом, постом или объяснением продукта.</span></div>
+              <div class="mini"><b>Что вставляется</b><span>Outline, first 30 seconds, spoken script, titles, thumbnails, posts.</span></div>
+              <div class="mini"><b>Для кого</b><span>Founders, creators, marketers, solo builders.</span></div>
+            </div>
+            <details>
+              <summary>Показать пример</summary>
+              <div class="example">
+                <ol>
+                  <li>Ситуация: нужно объяснить KukuPaste за 30 секунд.</li>
+                  <li>Ctrl+Q делает outline: hook, promise, sections, ending.</li>
+                  <li>Следующий Ctrl+Q пишет первые 30 секунд без clickbait.</li>
+                  <li>Следующие шаги делают spoken script, titles/thumbnails и посты.</li>
+                  <li>Результат: один workflow даёт материал для видео, лендинга и соцсетей.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="pack">
+            <div>
+              <h3>Sales Follow-up Pack</h3>
+              <p>Для аккуратных follow-up писем после разговора, демо или молчания клиента.</p>
+              <div class="pack-meta">
+                <span class="pill">Sales</span>
+                <span class="pill">B2B</span>
+                <span class="pill">Follow-up</span>
+              </div>
+            </div>
+            <div class="pack-grid">
+              <div class="mini"><b>Что решает</b><span>Помогает писать без спама и давления.</span></div>
+              <div class="mini"><b>Когда использовать</b><span>После звонка, demo, beta invite или 7 дней без ответа.</span></div>
+              <div class="mini"><b>Что вставляется</b><span>Concise follow-up, softer follow-up, objections and buying signals.</span></div>
+              <div class="mini"><b>Для кого</b><span>Founders, sales, agencies, consultants.</span></div>
+            </div>
+            <details>
+              <summary>Показать пример</summary>
+              <div class="example">
+                <ol>
+                  <li>Ситуация: ты показал продукт потенциальному клиенту.</li>
+                  <li>Ctrl+Q делает follow-up по заметкам разговора.</li>
+                  <li>Следующий шаг готовит мягкое письмо через 7 дней.</li>
+                  <li>AI выделяет objections, buying signals и лучший следующий message.</li>
+                  <li>Результат: продажи выглядят системно, а не случайно.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="pack">
+            <div>
+              <h3>Research Brief Pack</h3>
+              <p>Для анализа конкурентов, решений, рисков, источников и стратегии продукта.</p>
+              <div class="pack-meta">
+                <span class="pill">Research</span>
+                <span class="pill">Strategy</span>
+                <span class="pill">Decision memo</span>
+              </div>
+            </div>
+            <div class="pack-grid">
+              <div class="mini"><b>Что решает</b><span>Собирает факты, evidence, риски и open questions.</span></div>
+              <div class="mini"><b>Когда использовать</b><span>Перед решением, публикацией, запуском или сравнением конкурентов.</span></div>
+              <div class="mini"><b>Что вставляется</b><span>Research summary, decision memo, source-check checklist.</span></div>
+              <div class="mini"><b>Для кого</b><span>Product, founders, analysts, content teams.</span></div>
+            </div>
+            <details>
+              <summary>Показать пример</summary>
+              <div class="example">
+                <ol>
+                  <li>Ситуация: ты сравниваешь KukuPaste с clipboard managers и AI tools.</li>
+                  <li>Ctrl+Q просит AI разложить материал на claims, evidence, risks.</li>
+                  <li>Следующий шаг делает decision memo с рекомендацией.</li>
+                  <li>Последний шаг собирает checklist того, что надо проверить перед публикацией.</li>
+                  <li>Результат: меньше хаоса, больше решений.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section id="how">
+        <h2>Как использовать с Claude, Codex или Cursor</h2>
+        <p class="section-lede">
+          Pack работает как сценарий разговора. Ты загружаешь библиотеку в стек,
+          а потом вставляешь шаги по очереди туда, где работаешь.
+        </p>
+        <div class="flow-grid">
+          <div class="flow"><h3>1. Выбери pack</h3><p>Открой Library и нажми “В стек” у нужного workflow.</p></div>
+          <div class="flow"><h3>2. Вставь первый шаг</h3><p>В Claude/Codex/Cursor нажми Ctrl+Q и добавь свой контекст.</p></div>
+          <div class="flow"><h3>3. Иди по цепочке</h3><p>Следующий Ctrl+Q вставляет следующий prompt, без поиска и копирования.</p></div>
+          <div class="flow"><h3>4. Сохрани результат</h3><p>Получаешь review, fix, reply, script или brief в повторяемом формате.</p></div>
+        </div>
+      </section>
+
+      <section id="security">
+        <h2>Для серьёзной работы: приватность и контроль</h2>
+        <p class="section-lede">
+          KukuPaste не заменяет AI и не отправляет данные в облако. Он помогает локально
+          держать цепочки текстов и быстро вставлять их в выбранный инструмент.
+        </p>
+        <div class="security-grid">
+          <div class="security"><h3>Local-first</h3><p>История и библиотеки живут на устройстве пользователя.</p></div>
+          <div class="security"><h3>No cloud</h3><p>Нет облачного аккаунта и синхронизации через сервер KukuPaste.</p></div>
+          <div class="security"><h3>No account</h3><p>Beta можно проверить без регистрации и onboarding-форм.</p></div>
+          <div class="security"><h3>Encrypted state</h3><p>Состояние шифруется локально через Windows DPAPI.</p></div>
+        </div>
+      </section>
+
+      <section id="download">
+        <div class="download">
+          <div>
+            <h2>Beta RC для проверки</h2>
+            <p class="section-lede">
+              Текущий кандидат включает workflow packs, import/export библиотек,
+              Free/Pro лимиты и локальное хранение. Установщик пока unsigned beta.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe">Скачать Beta RC</a>
+              <a class="btn" href="packs-sales-sheet.pdf">Открыть PDF sales sheet</a>
+            </div>
+          </div>
+          <div>
+            <h3>SHA-256</h3>
+            <div class="hash">18AB5C6AF805CCFCAD5B2742D0A57FCB8FF714154CD541B1D89FB4ACF6102011</div>
+            <p class="meta">Проверяемость installer'a для beta QA и пересылки внутри команды.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        KukuPaste · Sequential paste for AI workflows · Client material v1 · 2026-06-12
+      </footer>
+    </main>
+  </body>
+</html>
