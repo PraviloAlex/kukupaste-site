@@ -9,21 +9,43 @@
       content="KukuPaste is a local-first Windows utility for repeatable AI workflows in Claude, Codex, Cursor, support, sales, research, and content."
     />
     <style>
-      :root {
+      :root,
+      :root[data-theme="light"] {
+        --bg: #f5f2ed;
+        --bg-soft: #eee9e2;
+        --panel: rgba(255, 255, 255, 0.9);
+        --panel-2: rgba(255, 250, 244, 0.96);
+        --text: #141414;
+        --soft: rgba(20, 20, 20, 0.68);
+        --muted: rgba(20, 20, 20, 0.44);
+        --line: rgba(20, 20, 20, 0.12);
+        --line-soft: rgba(20, 20, 20, 0.08);
+        --line-strong: rgba(242, 91, 35, 0.48);
+        --orange: #f25b23;
+        --orange-2: #ff6b2a;
+        --green: #248a52;
+        --blue: #2868b6;
+        --shadow: 0 18px 44px rgba(52, 42, 33, 0.08);
+        --font-ui: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+        --font-mono: "Cascadia Mono", Consolas, monospace;
+      }
+
+      :root[data-theme="dark"] {
         --bg: #101010;
+        --bg-soft: #131313;
         --panel: #181818;
         --panel-2: #202020;
         --text: #f6f1e9;
         --soft: rgba(246, 241, 233, 0.74);
         --muted: rgba(246, 241, 233, 0.52);
         --line: rgba(246, 241, 233, 0.12);
+        --line-soft: rgba(246, 241, 233, 0.08);
         --line-strong: rgba(242, 91, 35, 0.56);
         --orange: #f25b23;
         --orange-2: #ff7a3d;
         --green: #67c587;
         --blue: #7fb0ff;
-        --font-ui: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
-        --font-mono: "Cascadia Mono", Consolas, monospace;
+        --shadow: none;
       }
 
       * {
@@ -36,11 +58,22 @@
 
       body {
         margin: 0;
-        background: var(--bg);
+        background:
+          linear-gradient(var(--grid-line, rgba(20, 20, 20, 0.035)) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line, rgba(20, 20, 20, 0.035)) 1px, transparent 1px),
+          radial-gradient(circle at 92% -12%, rgba(242, 91, 35, 0.13), transparent 30%),
+          var(--bg);
+        background-attachment: fixed;
+        background-size: 32px 32px, 32px 32px, auto, auto;
         color: var(--text);
         font-family: var(--font-ui);
         line-height: 1.55;
         -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      :root[data-theme="dark"] body {
+        --grid-line: rgba(242, 239, 232, 0.025);
       }
 
       a {
@@ -108,16 +141,25 @@
         text-decoration: none;
       }
 
-      .lang-switch {
+      .lang-switch,
+      .theme-switch {
         display: inline-flex;
         gap: 4px;
         padding: 4px;
         border: 1px solid var(--line);
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--switch-bg, rgba(255, 255, 255, 0.72));
+        box-shadow: 0 8px 24px rgba(52, 42, 33, 0.06);
       }
 
-      .lang-switch button {
+      :root[data-theme="dark"] .lang-switch,
+      :root[data-theme="dark"] .theme-switch {
+        --switch-bg: rgba(255, 255, 255, 0.03);
+        box-shadow: none;
+      }
+
+      .lang-switch button,
+      .theme-switch button {
         min-width: 38px;
         height: 30px;
         border: 0;
@@ -130,7 +172,12 @@
         cursor: pointer;
       }
 
-      .lang-switch button.active {
+      .theme-switch button {
+        min-width: 70px;
+      }
+
+      .lang-switch button.active,
+      .theme-switch button.active {
         background: var(--orange);
         color: #120d0a;
       }
@@ -149,7 +196,7 @@
         align-items: center;
         gap: 8px;
         margin-bottom: 18px;
-        color: var(--orange-2);
+        color: var(--orange);
         font-family: var(--font-mono);
         font-size: 12px;
         font-weight: 800;
@@ -199,11 +246,16 @@
         color: var(--text);
         font-weight: 800;
         text-decoration: none;
+        box-shadow: 0 10px 26px rgba(52, 42, 33, 0.07);
+      }
+
+      :root[data-theme="dark"] .btn {
+        box-shadow: none;
       }
 
       .btn.primary {
         border-color: var(--orange);
-        background: var(--orange);
+        background: linear-gradient(180deg, #ff8a4c, var(--orange));
         color: #120d0a;
       }
 
@@ -225,11 +277,16 @@
         padding: 8px 11px;
         border: 1px solid var(--line);
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--chip-bg, rgba(255, 255, 255, 0.72));
         color: var(--soft);
         font-family: var(--font-mono);
         font-size: 12px;
         font-weight: 800;
+      }
+
+      :root[data-theme="dark"] .badge,
+      :root[data-theme="dark"] .pill {
+        --chip-bg: rgba(255, 255, 255, 0.03);
       }
 
       .workflow-panel,
@@ -241,11 +298,19 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--panel);
+        box-shadow: var(--shadow);
       }
 
       .workflow-panel {
         border-color: var(--line-strong);
+        background:
+          linear-gradient(180deg, rgba(255, 154, 50, 0.08), rgba(242, 91, 35, 0.025)),
+          var(--panel);
         overflow: hidden;
+      }
+
+      :root[data-theme="dark"] .workflow-panel {
+        background: var(--panel);
       }
 
       .panel-head {
@@ -273,7 +338,11 @@
         padding: 14px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #111;
+        background: var(--inner-bg, rgba(255, 255, 255, 0.72));
+      }
+
+      :root[data-theme="dark"] .step {
+        --inner-bg: #111;
       }
 
       .num {
@@ -283,7 +352,8 @@
         height: 34px;
         border: 1px solid rgba(242, 91, 35, 0.55);
         border-radius: 8px;
-        color: var(--orange-2);
+        background: rgba(255, 107, 42, 0.08);
+        color: var(--orange);
         font-family: var(--font-mono);
         font-size: 13px;
         font-weight: 800;
@@ -352,11 +422,16 @@
         padding: 12px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #0c0c0c;
+        background: var(--code-bg, rgba(255, 255, 255, 0.72));
         color: var(--green);
         font-family: var(--font-mono);
         font-size: 13px;
         overflow-wrap: anywhere;
+      }
+
+      :root[data-theme="dark"] .code-line,
+      :root[data-theme="dark"] .hash {
+        --code-bg: #0c0c0c;
       }
 
       .hash {
@@ -397,7 +472,11 @@
         padding: 13px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #101010;
+        background: var(--mini-bg, rgba(255, 255, 255, 0.62));
+      }
+
+      :root[data-theme="dark"] .mini {
+        --mini-bg: #101010;
       }
 
       .mini b {
@@ -414,6 +493,10 @@
 
       details {
         grid-column: 1 / -1;
+        background: var(--panel-2);
+      }
+
+      :root[data-theme="dark"] details {
         background: #111;
       }
 
@@ -492,6 +575,10 @@
             <button type="button" data-lang="en">EN</button>
             <button type="button" data-lang="ru">RU</button>
             <button type="button" data-lang="es">ES</button>
+          </div>
+          <div class="theme-switch" aria-label="Theme">
+            <button type="button" data-theme-choice="light">Light</button>
+            <button type="button" data-theme-choice="dark">Dark</button>
           </div>
         </div>
       </nav>
@@ -1229,6 +1316,19 @@
         button.addEventListener("click", () => setLanguage(button.getAttribute("data-lang")));
       });
 
+      function setTheme(theme) {
+        const selected = theme === "dark" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", selected);
+        document.querySelectorAll("[data-theme-choice]").forEach((button) => {
+          button.classList.toggle("active", button.getAttribute("data-theme-choice") === selected);
+        });
+        localStorage.setItem("kukupaste-page-theme", selected);
+      }
+
+      document.querySelectorAll("[data-theme-choice]").forEach((button) => {
+        button.addEventListener("click", () => setTheme(button.getAttribute("data-theme-choice")));
+      });
+
       const savedLang = localStorage.getItem("kukupaste-page-lang");
       const browserLang = navigator.language && navigator.language.toLowerCase().startsWith("ru")
         ? "ru"
@@ -1236,6 +1336,7 @@
           ? "es"
           : "en";
       setLanguage(savedLang || browserLang);
+      setTheme(localStorage.getItem("kukupaste-page-theme") || "light");
     </script>
   </body>
 </html>
