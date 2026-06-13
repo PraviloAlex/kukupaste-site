@@ -416,6 +416,47 @@
         color: var(--soft);
       }
 
+      .feedback-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .feedback-item {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        gap: 10px;
+        align-items: start;
+        padding: 11px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--mini-bg, rgba(255, 255, 255, 0.62));
+        color: var(--soft);
+        font-size: 14px;
+      }
+
+      .feedback-item::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        margin-top: 5px;
+        border-radius: 50%;
+        background: var(--orange);
+        box-shadow: 0 0 0 4px rgba(242, 91, 35, 0.12);
+      }
+
+      :root[data-theme="dark"] .feedback-item {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+          #111;
+        border-color: rgba(246, 241, 233, 0.12);
+        color: rgba(246, 241, 233, 0.78);
+      }
+
+      :root[data-theme="dark"] .feedback-item::before {
+        box-shadow: 0 0 0 4px rgba(242, 91, 35, 0.18);
+      }
+
       .code-line,
       .hash {
         margin-top: 16px;
@@ -450,11 +491,23 @@
         padding: 22px;
       }
 
+      .pack h3 {
+        margin-bottom: 10px;
+        font-size: 23px;
+        line-height: 1.18;
+      }
+
       .pack-meta {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
         margin-top: 14px;
+      }
+
+      .app-name {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 13px;
       }
 
       .pill {
@@ -521,10 +574,20 @@
       }
 
       .security-grid,
-      .flow-grid {
+      .flow-grid,
+      .mode-grid,
+      .plan-grid {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 14px;
+      }
+
+      .mode-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .plan-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .download {
@@ -544,7 +607,9 @@
         .download,
         .pack-grid,
         .security-grid,
-        .flow-grid {
+        .flow-grid,
+        .mode-grid,
+        .plan-grid {
           grid-template-columns: 1fr;
         }
 
@@ -566,10 +631,11 @@
         <div class="brand"><span class="mark" aria-hidden="true"></span>KukuPaste</div>
         <div class="nav-right">
           <div class="nav-links">
-            <a href="#product" data-i18n="navProduct">Product</a>
+            <a href="#how" data-i18n="navHow">How it works</a>
             <a href="#pro" data-i18n="navPro">Pro</a>
+            <a href="#download" data-i18n="navBeta">Download</a>
+            <a href="#feedback" data-i18n="navFeedback">Feedback</a>
             <a href="#packs" data-i18n="navPacks">Packs</a>
-            <a href="#download" data-i18n="navBeta">Beta RC</a>
           </div>
           <div class="lang-switch" aria-label="Language">
             <button type="button" data-lang="en">EN</button>
@@ -585,15 +651,15 @@
 
       <header class="hero">
         <div>
-          <div class="eyebrow" data-i18n="eyebrow">Sequential paste for AI workflows</div>
-          <h1 data-i18n="heroTitle">KukuPaste turns copied text into a paste-ready stack</h1>
+          <div class="eyebrow" data-i18n="eyebrow">Clipboard order for real work</div>
+          <h1 data-i18n="heroTitle">Copy several texts. Paste them in order.</h1>
           <p class="lede" data-i18n="heroLead">
-            Copy prompts, replies, notes, and code review steps with Ctrl+C. Then paste them in order with Ctrl+Q across Claude, Codex, Cursor, email, CRM, and support chats.
+            KukuPaste remembers the texts you copy with Ctrl+C and pastes the next one with Ctrl+Q. Use it for prompts, replies, notes, code review steps, and repeated messages.
           </p>
           <div class="actions">
+            <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe" data-i18n="download">Download current version</a>
             <a class="btn primary" href="https://kukuluku.lemonsqueezy.com/checkout/buy/588de431-dbca-4648-93d8-4d403c2dc849" data-i18n="buyPro">Buy Pro $39.99</a>
-            <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe" data-i18n="download">Download Beta RC</a>
-            <a class="btn" href="#product" data-i18n="seeHow">See how it works</a>
+            <a class="btn" href="https://t.me/kukuluku_bot" data-i18n="sendFeedback">Send feedback</a>
           </div>
           <div class="meta" data-i18n="heroMeta">Current RC · Windows · 3 MB · SHA-256 below</div>
           <div class="badges" aria-label="Privacy badges">
@@ -606,34 +672,34 @@
 
         <aside class="workflow-panel" aria-label="Workflow example">
           <div class="panel-head">
-            <span>Claude / Codex workflow</span>
+            <span data-i18n="panelTitle">Simple example</span>
             <span>Ctrl+Q</span>
           </div>
           <div class="steps">
             <div class="step">
               <span class="num">1</span>
-              <div><strong>Ctrl+C</strong><span data-i18n="panelReview">Copy prompts, replies, notes, or code fragments as usual.</span></div>
+              <div><strong>Ctrl+C</strong><span data-i18n="panelReview">Copy Text A, then Text B, then Text C.</span></div>
             </div>
             <div class="step">
               <span class="num">2</span>
-              <div><strong>Stack</strong><span data-i18n="panelFix">KukuPaste keeps the copied texts ready in order.</span></div>
+              <div><strong>Stack</strong><span data-i18n="panelFix">KukuPaste keeps them in that order.</span></div>
             </div>
             <div class="step">
               <span class="num">3</span>
-              <div><strong>Ctrl+Q</strong><span data-i18n="panelSummary">Paste the next item exactly where you need it.</span></div>
+              <div><strong>Ctrl+Q</strong><span data-i18n="panelSummary">Paste A. Press again to paste B. Press again to paste C.</span></div>
             </div>
             <div class="step">
               <span class="num">4</span>
-              <div><strong>Repeat</strong><span data-i18n="panelRisk">Move through AI chats, docs, email, CRM, and support without searching.</span></div>
+              <div><strong>Done</strong><span data-i18n="panelRisk">No searching, no re-copying, no mixing up the order.</span></div>
             </div>
           </div>
         </aside>
       </header>
 
-      <section id="product">
-        <h2 data-i18n="productTitle">What KukuPaste actually does</h2>
+      <section id="how">
+        <h2 data-i18n="productTitle">How KukuPaste works</h2>
         <p class="section-lede" data-i18n="productLead">
-          KukuPaste is a tiny Windows utility for people who copy the same kinds of text all day: AI prompts, support replies, code review steps, research notes, and sales follow-ups.
+          It is a small Windows tray app for people who move the same kinds of text between apps all day.
         </p>
         <div class="flow-grid">
           <div class="flow"><h3 data-i18n="product1Title">1. Copy normally</h3><p data-i18n="product1Text">Use Ctrl+C in any app. KukuPaste adds each copied text to the active stack.</p></div>
@@ -643,33 +709,47 @@
         </div>
       </section>
 
+      <section id="paste">
+        <h2 data-i18n="pasteTitle">Three ways to paste</h2>
+        <p class="section-lede" data-i18n="pasteLead">
+          KukuPaste is built around predictable paste flow: one item, a manual chooser, or the whole stack at once.
+        </p>
+        <div class="mode-grid">
+          <div class="flow"><h3 data-i18n="paste1Title">Ctrl+Q: paste next</h3><p data-i18n="paste1Text">Paste one stack item into the active window. Press again for the next item.</p></div>
+          <div class="flow"><h3 data-i18n="paste2Title">Hold Ctrl+Q: choose</h3><p data-i18n="paste2Text">Open the compact chooser when you want to pick from the active stack or history.</p></div>
+          <div class="flow"><h3 data-i18n="paste3Title">Ctrl+Shift+Q: paste all</h3><p data-i18n="paste3Text">Insert the whole stack at once: 2, 3, 5, or more saved texts, depending on your plan limit.</p></div>
+          <div class="flow"><h3 data-i18n="paste4Title">After paste: history</h3><p data-i18n="paste4Text">Pasted items leave the active stack and remain in local history, so you can restore them later.</p></div>
+        </div>
+        <div class="code-line" data-i18n="pasteFormats">Paste all formats: plain text, separated by ---, or Section 1 / Section 2 / Section 3.</div>
+      </section>
+
       <section id="where">
-        <h2 data-i18n="whereTitle">Where it helps</h2>
+        <h2 data-i18n="whereTitle">When you would use it</h2>
         <p class="section-lede" data-i18n="whereLead">
-          KukuPaste is useful whenever one task needs several text blocks in a specific order.
+          Use KukuPaste when you already know the next few texts you need, but do not want to keep searching, copying, and switching tabs.
         </p>
         <div class="security-grid">
-          <div class="security"><h3 data-i18n="where1Title">AI app building</h3><p data-i18n="where1Text">Send review, fix, summary, and QA prompts to Claude, Codex, or Cursor.</p></div>
-          <div class="security"><h3 data-i18n="where2Title">Support</h3><p data-i18n="where2Text">Reply to users with calm, repeatable support flows.</p></div>
-          <div class="security"><h3 data-i18n="where3Title">Sales</h3><p data-i18n="where3Text">Prepare follow-ups, objection notes, and next-step messages.</p></div>
-          <div class="security"><h3 data-i18n="where4Title">Research and content</h3><p data-i18n="where4Text">Move notes, briefs, outlines, scripts, and social posts without tab hunting.</p></div>
+          <div class="security"><h3 data-i18n="where1Title">Claude, Codex, Cursor</h3><p data-i18n="where1Text">Paste several prompt steps without rebuilding the same conversation by hand.</p></div>
+          <div class="security"><h3 data-i18n="where2Title">Customer replies</h3><p data-i18n="where2Text">Keep repeated answers ready for support, user questions, and onboarding.</p></div>
+          <div class="security"><h3 data-i18n="where3Title">Sales follow-ups</h3><p data-i18n="where3Text">Send a first reply, a softer reminder, and next steps without rewriting them each time.</p></div>
+          <div class="security"><h3 data-i18n="where4Title">Content and notes</h3><p data-i18n="where4Text">Move outlines, scripts, research notes, and posts between apps in the right order.</p></div>
         </div>
       </section>
 
       <section id="why">
         <h2 data-i18n="whyTitle">Why this is not just a clipboard manager</h2>
         <p class="section-lede" data-i18n="whyLead">
-          A regular clipboard helps you find old text. KukuPaste helps you move through a work scenario: one pack loads several steps, and Ctrl+Q pastes them one by one into Claude, Codex, Cursor, CRM, email, or support chat.
+          A normal clipboard is for finding something you copied before. KukuPaste is for finishing a small text sequence now.
         </p>
         <div class="compare">
           <div class="plain-box">
-            <h3 data-i18n="bigPromptTitle">One huge prompt</h3>
-            <p data-i18n="bigPromptText">It becomes long, mixes tasks, and forces you to edit context manually every time.</p>
+            <h3 data-i18n="bigPromptTitle">Normal clipboard</h3>
+            <p data-i18n="bigPromptText">You open history, search for the right text, copy it again, then hope it is the right one.</p>
           </div>
           <div class="plain-box">
-            <h3 data-i18n="workflowTitle">Workflow pack</h3>
-            <p data-i18n="workflowText">It splits work into clear steps: review -> fix -> summary -> risk check. AI answers better because the task is cleaner.</p>
-            <div class="code-line">Review -&gt; Fix -&gt; PR Summary -&gt; Release Risk Checklist</div>
+            <h3 data-i18n="workflowTitle">KukuPaste stack</h3>
+            <p data-i18n="workflowText">You copy the texts once, keep the order, and paste the next item whenever you press Ctrl+Q.</p>
+            <div class="code-line">Copy A -&gt; Copy B -&gt; Copy C -&gt; Ctrl+Q -&gt; A -&gt; B -&gt; C</div>
           </div>
         </div>
       </section>
@@ -677,57 +757,54 @@
       <section id="pro">
         <div class="download">
           <div>
-            <h2 data-i18n="proTitle">KukuPaste Pro Lifetime Beta</h2>
+            <h2 data-i18n="proTitle">KukuPaste Pro Lifetime</h2>
             <p class="section-lede" data-i18n="proLead">
               One-time $39.99. Early buyer price for people who want higher limits, portable libraries, and ready-made workflow packs.
             </p>
             <div class="actions">
               <a class="btn primary" href="https://kukuluku.lemonsqueezy.com/checkout/buy/588de431-dbca-4648-93d8-4d403c2dc849" data-i18n="buyPro">Buy Pro $39.99</a>
-              <a class="btn" href="#packs" data-i18n="viewPacks">View packs</a>
+              <a class="btn" href="#download" data-i18n="download">Download current version</a>
             </div>
           </div>
           <div class="plain-box">
             <h3 data-i18n="proIncludesTitle">Included in Pro</h3>
-            <p data-i18n="proIncludesText">Higher limits, unlimited libraries, library import/export, workflow packs, and future v1 updates included.</p>
+            <p data-i18n="proIncludesText">Pro is for people who use KukuPaste every day and need bigger stacks, more history, more libraries, and import/export.</p>
             <div class="badges">
               <span class="badge">One-time $39.99</span>
-              <span class="badge">Lifetime Beta</span>
+              <span class="badge">Lifetime Pro</span>
               <span class="badge">Future v1 updates</span>
             </div>
+          </div>
+        </div>
+        <div class="plan-grid" style="margin-top: 16px">
+          <div class="plain-box">
+            <h3 data-i18n="freePlanTitle">Free</h3>
+            <p data-i18n="freePlanText">Try the core flow: 3 stack items, 50 history items, and up to 3 user libraries.</p>
+          </div>
+          <div class="plain-box">
+            <h3 data-i18n="proPlanTitle">Pro</h3>
+            <p data-i18n="proPlanText">Up to 20 stack items, 5000 history items, 100 libraries, import/export, workflow packs, and future v1 updates.</p>
           </div>
         </div>
       </section>
 
       <section id="packs">
-        <h2 data-i18n="packsTitle">5 packs that cover paid AI workflows</h2>
+        <h2 data-i18n="packsTitle">Ready-made libraries are included</h2>
         <p class="section-lede" data-i18n="packsLead">
-          These packs were chosen because they sit next to work people already pay for: development, support, sales, research, and content.
+          Packs are optional starter libraries. Load one into the stack when you want a ready sequence for code review, support, sales, research, or content.
         </p>
         <div class="packs" id="pack-list"></div>
       </section>
 
-      <section id="how">
-        <h2 data-i18n="howTitle">How to use workflow packs</h2>
-        <p class="section-lede" data-i18n="howLead">
-          A pack works like a conversation script. Load a library into the stack, then paste each step wherever you work.
-        </p>
-        <div class="flow-grid">
-          <div class="flow"><h3 data-i18n="flow1Title">1. Choose a pack</h3><p data-i18n="flow1Text">Open Library and click “To stack” on the workflow you need.</p></div>
-          <div class="flow"><h3 data-i18n="flow2Title">2. Paste step one</h3><p data-i18n="flow2Text">In Claude/Codex/Cursor, press Ctrl+Q and add your context.</p></div>
-          <div class="flow"><h3 data-i18n="flow3Title">3. Follow the chain</h3><p data-i18n="flow3Text">Each next Ctrl+Q inserts the next prompt without searching or copying.</p></div>
-          <div class="flow"><h3 data-i18n="flow4Title">4. Save the result</h3><p data-i18n="flow4Text">Get a review, fix, reply, script, or brief in a repeatable format.</p></div>
-        </div>
-      </section>
-
       <section id="security">
-        <h2 data-i18n="securityTitle">For serious work: privacy and control</h2>
+        <h2 data-i18n="securityTitle">Private by default</h2>
         <p class="section-lede" data-i18n="securityLead">
-          KukuPaste does not replace AI and does not send your data to the cloud. It keeps text workflows locally and helps paste them into the tool you choose.
+          KukuPaste does not replace AI and does not send your data to a KukuPaste cloud. It stores your clipboard workflow locally on your Windows device.
         </p>
         <div class="security-grid">
           <div class="security"><h3>Local-first</h3><p data-i18n="secLocal">History and libraries stay on the user's device.</p></div>
           <div class="security"><h3>No cloud</h3><p data-i18n="secCloud">No KukuPaste cloud account or server sync.</p></div>
-          <div class="security"><h3>No account</h3><p data-i18n="secAccount">The beta can be tested without registration forms.</p></div>
+          <div class="security"><h3>No account</h3><p data-i18n="secAccount">You can try the current version without registration forms.</p></div>
           <div class="security"><h3>Encrypted state</h3><p data-i18n="secEncrypted">Local state is encrypted with Windows DPAPI.</p></div>
         </div>
       </section>
@@ -735,20 +812,45 @@
       <section id="download">
         <div class="download">
           <div>
-            <h2 data-i18n="downloadTitle">Beta RC for testing</h2>
+            <h2 data-i18n="downloadTitle">Download the current Windows version</h2>
             <p class="section-lede" data-i18n="downloadLead">
-              The current candidate includes workflow packs, library import/export, Free/Pro limits, and local-first storage. The installer is an unsigned beta build.
+              Download installs the current Windows version. Buy Pro opens Lemon Squeezy. This build is unsigned, so Windows SmartScreen may show a warning.
             </p>
             <div class="actions">
+              <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe" data-i18n="download">Download current version</a>
               <a class="btn primary" href="https://kukuluku.lemonsqueezy.com/checkout/buy/588de431-dbca-4648-93d8-4d403c2dc849" data-i18n="buyPro">Buy Pro $39.99</a>
-              <a class="btn primary" href="downloads/KukuPaste_Beta_RC_Current.exe" data-i18n="download">Download Beta RC</a>
-              <a class="btn" href="packs-sales-sheet.pdf" data-i18n="openPdf">Open PDF sales sheet</a>
+              <a class="btn" href="packs-sales-sheet.pdf" data-i18n="openPdf">Open PDF overview</a>
             </div>
           </div>
           <div>
             <h3>SHA-256</h3>
             <div class="hash">18AB5C6AF805CCFCAD5B2742D0A57FCB8FF714154CD541B1D89FB4ACF6102011</div>
-            <p class="meta" data-i18n="hashText">Installer verification for beta QA and internal sharing.</p>
+            <p class="meta" data-i18n="hashText">Use this hash to check that the installer file did not change after download.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="feedback">
+        <div class="download">
+          <div>
+            <h2 data-i18n="feedbackTitle">Tell me what was unclear</h2>
+            <p class="section-lede" data-i18n="feedbackLead">
+              You do not need to buy Pro to send feedback. Tell me what you tried, what worked, and where the page or app confused you.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="https://t.me/kukuluku_bot" data-i18n="sendFeedback">Send feedback</a>
+            </div>
+          </div>
+          <div class="plain-box">
+            <h3 data-i18n="feedbackAskTitle">What to send</h3>
+            <p data-i18n="feedbackAskText">Choose the closest problem and write one short message.</p>
+            <div class="feedback-list">
+              <div class="feedback-item" data-i18n="feedbackProblem1">I did not understand how to start.</div>
+              <div class="feedback-item" data-i18n="feedbackProblem2">Ctrl+Q or Ctrl+Shift+Q did not work.</div>
+              <div class="feedback-item" data-i18n="feedbackProblem3">I could not find the right scenario in Library.</div>
+              <div class="feedback-item" data-i18n="feedbackProblem4">Windows showed a warning during install.</div>
+              <div class="feedback-item" data-i18n="feedbackProblem5">Something on this page was unclear.</div>
+            </div>
           </div>
         </div>
       </section>
@@ -764,6 +866,7 @@
           navProduct: "Product",
           navPro: "Pro",
           navPacks: "Packs",
+          navFeedback: "Feedback",
           navHow: "How to use",
           navBeta: "Beta RC",
           eyebrow: "Sequential paste for AI workflows",
@@ -790,6 +893,18 @@
           product3Text: "Press Ctrl+Q to paste the next stack item into the current window.",
           product4Title: "4. Reuse workflows",
           product4Text: "Save common stacks as libraries and load them again when the same work returns.",
+          pasteTitle: "Three ways to paste",
+          pasteLead:
+            "KukuPaste is built around predictable paste flow: one item, a manual chooser, or the whole stack at once.",
+          paste1Title: "Ctrl+Q: paste next",
+          paste1Text: "Paste one stack item into the active window. Press again for the next item.",
+          paste2Title: "Hold Ctrl+Q: choose",
+          paste2Text: "Open the compact chooser when you want to pick from the active stack or history.",
+          paste3Title: "Ctrl+Shift+Q: paste all",
+          paste3Text: "Insert the whole stack at once: 2, 3, 5, or more saved texts, depending on your plan limit.",
+          paste4Title: "After paste: history",
+          paste4Text: "Pasted items leave the active stack and remain in local history, so you can restore them later.",
+          pasteFormats: "Paste all formats: plain text, separated by ---, or Section 1 / Section 2 / Section 3.",
           whereTitle: "Where it helps",
           whereLead: "KukuPaste is useful whenever one task needs several text blocks in a specific order.",
           where1Title: "AI app building",
@@ -813,6 +928,10 @@
             "One-time $39.99. Early buyer price for people who want higher limits, portable libraries, and ready-made workflow packs.",
           proIncludesTitle: "Included in Pro",
           proIncludesText: "Higher limits, unlimited libraries, library import/export, workflow packs, and future v1 updates included.",
+          freePlanTitle: "Free",
+          freePlanText: "3 stack items, 50 history items, and up to 3 user libraries. Good for trying the core flow.",
+          proPlanTitle: "Pro",
+          proPlanText: "Up to 20 stack items, 5000 history items, 100 libraries, import/export, workflow packs, and future v1 updates.",
           packsTitle: "5 packs that cover paid AI workflows",
           packsLead:
             "These packs were chosen because they sit next to work people already pay for: development, support, sales, research, and content.",
@@ -838,6 +957,12 @@
             "The current candidate includes workflow packs, library import/export, Free/Pro limits, and local-first storage. The installer is an unsigned beta build.",
           openPdf: "Open PDF sales sheet",
           hashText: "Installer verification for beta QA and internal sharing.",
+          feedbackTitle: "Beta feedback goes directly to the maker",
+          feedbackLead:
+            "GitHub Pages does not collect comments. For the beta, feedback is intentionally direct: write what confused you, what worked, and what would make you pay.",
+          sendFeedback: "Send beta feedback",
+          feedbackAskTitle: "What to send",
+          feedbackAskText: "Your Windows version, what you tried, whether Ctrl+Q / Ctrl+Shift+Q worked, and the one thing that felt unclear.",
           footer: "KukuPaste · Sequential paste for AI workflows · Client material v1 · 2026-06-12",
           labels: {
             solves: "What it solves",
@@ -933,6 +1058,7 @@
           navProduct: "Продукт",
           navPro: "Pro",
           navPacks: "Packs",
+          navFeedback: "Отзывы",
           navHow: "Как использовать",
           navBeta: "Beta RC",
           eyebrow: "Последовательная вставка для AI workflows",
@@ -959,6 +1085,18 @@
           product3Text: "Нажми Ctrl+Q, чтобы вставить следующий элемент стека в текущее окно.",
           product4Title: "4. Повторяй workflows",
           product4Text: "Сохраняй частые стеки как библиотеки и загружай их снова, когда задача возвращается.",
+          pasteTitle: "Три способа вставки",
+          pasteLead:
+            "KukuPaste сделан вокруг предсказуемой вставки: один элемент, ручной выбор или весь стек сразу.",
+          paste1Title: "Ctrl+Q: вставить следующий",
+          paste1Text: "Вставляет один элемент стека в активное окно. Нажми снова, чтобы вставить следующий.",
+          paste2Title: "Удержать Ctrl+Q: выбрать",
+          paste2Text: "Открывает компактный выбор, если нужно взять элемент из активного стека или истории.",
+          paste3Title: "Ctrl+Shift+Q: вставить всё",
+          paste3Text: "Вставляет весь стек сразу: 2, 3, 5 или больше сохранённых текстов, в зависимости от лимита плана.",
+          paste4Title: "После вставки: история",
+          paste4Text: "Вставленные элементы уходят из активного стека и остаются в локальной истории, чтобы их можно было вернуть позже.",
+          pasteFormats: "Форматы Paste all: обычный текст, разделение через ---, или Section 1 / Section 2 / Section 3.",
           whereTitle: "Где это помогает",
           whereLead: "KukuPaste полезен везде, где одна задача требует несколько текстовых блоков в точном порядке.",
           where1Title: "Разработка с AI",
@@ -982,6 +1120,10 @@
             "One-time $39.99. Early buyer price для людей, которым нужны повышенные лимиты, переносимые библиотеки и готовые workflow packs.",
           proIncludesTitle: "Что входит в Pro",
           proIncludesText: "Повышенные лимиты, unlimited libraries, import/export библиотек, workflow packs и будущие обновления v1 included.",
+          freePlanTitle: "Free",
+          freePlanText: "3 элемента в стеке, 50 элементов истории и до 3 пользовательских библиотек. Хорошо, чтобы попробовать базовую механику.",
+          proPlanTitle: "Pro",
+          proPlanText: "До 20 элементов в стеке, 5000 элементов истории, 100 библиотек, import/export, workflow packs и будущие обновления v1.",
           packsTitle: "5 packs, которые закрывают платные AI-сценарии",
           packsLead:
             "Эти наборы выбраны не случайно: они лежат рядом с тем, за что люди уже платят - разработка, поддержка, продажи, исследования и контент.",
@@ -1008,6 +1150,12 @@
             "Текущий кандидат включает workflow packs, import/export библиотек, Free/Pro лимиты и локальное хранение. Установщик пока unsigned beta.",
           openPdf: "Открыть PDF sales sheet",
           hashText: "Проверяемость installer'a для beta QA и пересылки внутри команды.",
+          feedbackTitle: "Beta-отзывы идут напрямую автору",
+          feedbackLead:
+            "GitHub Pages не собирает комментарии. Для beta обратная связь специально прямая: напиши, что было непонятно, что сработало и за что ты бы заплатил.",
+          sendFeedback: "Отправить beta feedback",
+          feedbackAskTitle: "Что написать",
+          feedbackAskText: "Версию Windows, что ты попробовал, сработали ли Ctrl+Q / Ctrl+Shift+Q, и один момент, который был непонятен.",
           footer: "KukuPaste · Sequential paste for AI workflows · Client material v1 · 2026-06-12",
           labels: {
             solves: "Что решает",
@@ -1103,6 +1251,7 @@
           navProduct: "Producto",
           navPro: "Pro",
           navPacks: "Packs",
+          navFeedback: "Feedback",
           navHow: "Cómo usar",
           navBeta: "Beta RC",
           eyebrow: "Pegado secuencial para workflows de IA",
@@ -1129,6 +1278,18 @@
           product3Text: "Presiona Ctrl+Q para pegar el siguiente elemento del stack en la ventana actual.",
           product4Title: "4. Reutiliza workflows",
           product4Text: "Guarda stacks comunes como bibliotecas y cárgalos otra vez cuando vuelve la misma tarea.",
+          pasteTitle: "Tres formas de pegar",
+          pasteLead:
+            "KukuPaste está pensado para un flujo predecible: un elemento, selección manual o todo el stack de una vez.",
+          paste1Title: "Ctrl+Q: pegar siguiente",
+          paste1Text: "Pega un elemento del stack en la ventana activa. Presiona otra vez para el siguiente.",
+          paste2Title: "Mantener Ctrl+Q: elegir",
+          paste2Text: "Abre el selector compacto cuando quieres tomar algo del stack activo o del historial.",
+          paste3Title: "Ctrl+Shift+Q: pegar todo",
+          paste3Text: "Inserta todo el stack de una vez: 2, 3, 5 o más textos guardados, según el límite del plan.",
+          paste4Title: "Después de pegar: historial",
+          paste4Text: "Los elementos pegados salen del stack activo y quedan en el historial local para restaurarlos después.",
+          pasteFormats: "Formatos de Paste all: texto plano, separado por ---, o Section 1 / Section 2 / Section 3.",
           whereTitle: "Dónde ayuda",
           whereLead: "KukuPaste sirve cuando una tarea necesita varios bloques de texto en un orden específico.",
           where1Title: "Construcción de apps con IA",
@@ -1152,6 +1313,10 @@
             "Pago único de $39.99. Precio early buyer para quienes necesitan límites más altos, bibliotecas portables y workflow packs listos.",
           proIncludesTitle: "Incluido en Pro",
           proIncludesText: "Límites más altos, bibliotecas ilimitadas, import/export de bibliotecas, workflow packs y futuras actualizaciones v1 incluidas.",
+          freePlanTitle: "Free",
+          freePlanText: "3 elementos en stack, 50 elementos de historial y hasta 3 bibliotecas de usuario. Bueno para probar el flujo principal.",
+          proPlanTitle: "Pro",
+          proPlanText: "Hasta 20 elementos en stack, 5000 elementos de historial, 100 bibliotecas, import/export, workflow packs y futuras actualizaciones v1.",
           packsTitle: "5 packs para workflows de IA con valor de pago",
           packsLead:
             "Estos packs cubren trabajos por los que la gente ya paga: desarrollo, soporte, ventas, investigación y contenido.",
@@ -1177,6 +1342,12 @@
             "El candidato actual incluye workflow packs, import/export de bibliotecas, límites Free/Pro y almacenamiento local-first. El instalador es una beta sin firma.",
           openPdf: "Abrir PDF sales sheet",
           hashText: "Verificación del instalador para beta QA y uso interno.",
+          feedbackTitle: "El feedback beta va directo al creador",
+          feedbackLead:
+            "GitHub Pages no recoge comentarios. Para la beta, el feedback es directo: escribe qué te confundió, qué funcionó y qué te haría pagar.",
+          sendFeedback: "Enviar feedback beta",
+          feedbackAskTitle: "Qué enviar",
+          feedbackAskText: "Tu versión de Windows, qué probaste, si Ctrl+Q / Ctrl+Shift+Q funcionó, y la parte que no quedó clara.",
           footer: "KukuPaste · Sequential paste for AI workflows · Client material v1 · 2026-06-12",
           labels: {
             solves: "Qué resuelve",
@@ -1270,6 +1441,532 @@
         },
       };
 
+      const clientLandingCopy = {
+        en: {
+          navHow: "How it works",
+          navBeta: "Download",
+          navPacks: "Libraries",
+          eyebrow: "Clipboard order for real work",
+          heroTitle: "Copy several texts. Paste them in order.",
+          heroLead:
+            "KukuPaste remembers the texts you copy with Ctrl+C and pastes the next one with Ctrl+Q. Use it for prompts, replies, notes, code review steps, and repeated messages.",
+          heroMeta: "Windows version · unsigned build · SHA-256 below",
+          download: "Download current version",
+          panelTitle: "Simple example",
+          panelReview: "Copy Text A, then Text B, then Text C.",
+          panelFix: "KukuPaste keeps them in that order.",
+          panelSummary: "Paste A. Press again to paste B. Press again to paste C.",
+          panelRisk: "No searching, no re-copying, no mixing up the order.",
+          productTitle: "How KukuPaste works",
+          productLead:
+            "It is a small Windows tray app for people who move the same kinds of text between apps all day.",
+          product1Title: "1. Copy normally",
+          product1Text: "Use Ctrl+C in any app. Each copied text is added to the active stack.",
+          product2Title: "2. Keep the order",
+          product2Text: "The first copied text stays first, the second stays second, and so on.",
+          product3Title: "3. Paste next",
+          product3Text: "Press Ctrl+Q to paste the next stack item into the current window.",
+          product4Title: "4. Save useful flows",
+          product4Text: "Save repeated text sequences as libraries and load them again later.",
+          pasteTitle: "What the hotkeys do",
+          pasteLead: "KukuPaste gives you three simple ways to paste: next item, chooser, or the whole stack.",
+          paste1Title: "Ctrl+Q: paste next",
+          paste1Text: "Paste one item. Press again to paste the next one.",
+          paste2Title: "Hold Ctrl+Q: choose",
+          paste2Text: "Open a small chooser if you want to pick from the stack or history.",
+          paste3Title: "Ctrl+Shift+Q: paste all",
+          paste3Text: "Paste the whole stack at once: two, three, five, or more texts, depending on your plan limit.",
+          paste4Title: "After paste: history",
+          paste4Text: "Pasted items leave the active stack and remain in local history, so you can restore them later.",
+          pasteFormats: "Paste all formats: plain text, separated by ---, or Section 1 / Section 2 / Section 3.",
+          whereTitle: "When you would use it",
+          whereLead:
+            "Use KukuPaste when you already know the next few texts you need, but do not want to keep searching, copying, and switching tabs.",
+          where1Title: "Claude, Codex, Cursor",
+          where1Text: "Paste several prompt steps without rebuilding the same conversation by hand.",
+          where2Title: "Customer replies",
+          where2Text: "Keep repeated answers ready for support, user questions, and onboarding.",
+          where3Title: "Sales follow-ups",
+          where3Text: "Send a first reply, a softer reminder, and next steps without rewriting them each time.",
+          where4Title: "Content and notes",
+          where4Text: "Move outlines, scripts, research notes, and posts between apps in the right order.",
+          whyLead:
+            "A normal clipboard is for finding something you copied before. KukuPaste is for finishing a small text sequence now.",
+          bigPromptTitle: "Normal clipboard",
+          bigPromptText: "You open history, search for the right text, copy it again, then hope it is the right one.",
+          workflowTitle: "KukuPaste stack",
+          workflowText:
+            "You copy the texts once, keep the order, and paste the next item whenever you press Ctrl+Q.",
+          proTitle: "KukuPaste Pro Lifetime",
+          proLead:
+            "One-time $39.99. Early buyer price for people who want higher limits, portable libraries, and ready-made scenarios.",
+          proIncludesText:
+            "Pro is for people who use KukuPaste every day and need bigger stacks, more history, more libraries, and import/export.",
+          freePlanText: "Try the core flow: 3 stack items, 50 history items, and up to 3 user libraries.",
+          packsTitle: "Ready-made scenarios are already inside",
+          packsLead:
+            "Open Library, choose a ready scenario, and click “To stack”. After that, KukuPaste pastes its steps one by one with Ctrl+Q. The English name shown in the app is listed on each card.",
+          securityTitle: "Private by default",
+          securityLead:
+            "KukuPaste does not replace AI and does not send your data to a KukuPaste cloud. It stores your clipboard workflow locally on your Windows device.",
+          secAccount: "You can try the current version without registration forms.",
+          downloadTitle: "Download the current Windows version",
+          downloadLead:
+            "Download installs the current Windows version. Buy Pro opens Lemon Squeezy. This build is unsigned, so Windows SmartScreen may show a warning.",
+          openPdf: "Open PDF overview",
+          hashText: "Use this hash to check that the installer file did not change after download.",
+          feedbackTitle: "Tell me what was unclear",
+          feedbackLead:
+            "You do not need to buy Pro to send feedback. Tell me what you tried, what worked, and where the page or app confused you.",
+          sendFeedback: "Send feedback",
+          feedbackAskTitle: "What can go wrong",
+          feedbackAskText: "Choose the closest problem and write one short message.",
+          feedbackProblem1: "I did not understand how to start.",
+          feedbackProblem2: "Ctrl+Q or Ctrl+Shift+Q did not work.",
+          feedbackProblem3: "I could not find the right scenario in Library.",
+          feedbackProblem4: "Windows showed a warning during install.",
+          feedbackProblem5: "Something on this page was unclear.",
+          footer: "KukuPaste · Copy several texts. Paste them in order. · Client landing v2 · 2026-06-13",
+          packs: [
+            {
+              title: "Check My Work Pack",
+              appName: "In the app: Cursor Code Review Pack",
+              intro: "For checking work before you send it, publish it, or show it to someone.",
+              tags: ["Work check", "Less mistakes", "Before sending"],
+              solves: "Helps you ask AI to find mistakes, unclear places, missing steps, and risks.",
+              when: "When you changed something and want one last check before it goes out.",
+              inserts: "Check this, find risks, suggest a small fix, write a short summary.",
+              forWhom: "People who write, build, edit, or prepare work for clients.",
+              example: [
+                "You finished a task and want to make sure nothing important is broken or missing.",
+                "Ctrl+Q inserts a simple check request.",
+                "You add the text, file, or short description of what changed.",
+                "The next Ctrl+Q asks for the smallest fix, not a full rewrite.",
+                "Result: you send work with more confidence.",
+              ],
+            },
+            {
+              title: "Customer Reply Pack",
+              appName: "In the app: Support Replies Pack",
+              intro: "For answering people calmly when they ask a question or report a problem.",
+              tags: ["Support", "Replies", "User questions"],
+              solves: "Turns a messy message into a clear, friendly answer.",
+              when: "When someone writes that they are confused, upset, or stuck.",
+              inserts: "Polite reply, short chat version, follow-up, possible next questions.",
+              forWhom: "Founders, support teams, freelancers, and small businesses.",
+              example: [
+                "A person writes: 'I clicked Import and I do not understand what to do next.'",
+                "Ctrl+Q inserts a request to write a calm answer with simple steps.",
+                "The next Ctrl+Q makes a shorter version for chat.",
+                "The next Ctrl+Q prepares a follow-up if the person still needs help.",
+                "Result: your answer sounds clear and professional, even when you are busy.",
+              ],
+            },
+            {
+              title: "Explain My Idea Pack",
+              appName: "In the app: YouTube Script Pack",
+              intro: "For turning a raw idea into a simple explanation, video script, post, or demo text.",
+              tags: ["Content", "Demo", "Posts"],
+              solves: "Helps you move from 'I know what I mean' to text other people understand.",
+              when: "When you need to explain a product, feature, service, or idea quickly.",
+              inserts: "Short explanation, opening hook, script, title ideas, post versions.",
+              forWhom: "Creators, founders, marketers, teachers, and indie makers.",
+              example: [
+                "You have an idea but do not know how to explain it in a short, clear way.",
+                "Ctrl+Q asks AI to turn the idea into a simple outline.",
+                "The next Ctrl+Q writes the first 30 seconds.",
+                "The next steps create a longer script, titles, and short posts.",
+                "Result: one idea becomes useful material for a page, video, or message.",
+              ],
+            },
+            {
+              title: "Follow-up Pack",
+              appName: "In the app: Sales Follow-up Pack",
+              intro: "For reminding people without sounding pushy or annoying.",
+              tags: ["Sales", "Email", "Follow-up"],
+              solves: "Helps you write a polite next message when someone has not replied.",
+              when: "After a call, demo, offer, message, or a few quiet days.",
+              inserts: "First follow-up, softer reminder, next step, possible objections.",
+              forWhom: "Sales, agencies, consultants, founders, and freelancers.",
+              example: [
+                "You wrote to someone, but they did not answer.",
+                "Ctrl+Q inserts a polite follow-up request.",
+                "You add a few words about the last conversation.",
+                "The next Ctrl+Q makes the message softer or shorter.",
+                "Result: you keep the conversation alive without sounding like spam.",
+              ],
+            },
+            {
+              title: "Understand Information Pack",
+              appName: "In the app: Research Brief Pack",
+              intro: "For turning a pile of notes, links, or opinions into a clear summary.",
+              tags: ["Research", "Decisions", "Clarity"],
+              solves: "Helps you see what matters, what is risky, and what to check next.",
+              when: "When there is too much information and you need a clear answer.",
+              inserts: "Main points, risks, questions, summary, next-step checklist.",
+              forWhom: "Anyone comparing options, making decisions, or preparing a short brief.",
+              example: [
+                "You have notes from different places and do not know what is actually important.",
+                "Ctrl+Q asks AI to separate the main facts from the noise.",
+                "The next Ctrl+Q asks for risks and open questions.",
+                "The next Ctrl+Q turns it into a short summary with next steps.",
+                "Result: you understand the situation faster and make a cleaner decision.",
+              ],
+            },
+          ],
+        },
+        ru: {
+          navHow: "Как работает",
+          navBeta: "Скачать",
+          navPacks: "Библиотеки",
+          eyebrow: "Порядок в буфере для реальной работы",
+          heroTitle: "Скопируй несколько текстов. Вставь их по порядку.",
+          heroLead:
+            "KukuPaste запоминает тексты, которые ты копируешь через Ctrl+C, и вставляет следующий через Ctrl+Q. Подходит для промптов, ответов, заметок, code review и повторяющихся сообщений.",
+          heroMeta: "Windows-версия · неподписанная сборка · SHA-256 ниже",
+          download: "Скачать текущую версию",
+          panelTitle: "Простой пример",
+          panelReview: "Скопируй текст A, потом текст B, потом текст C.",
+          panelFix: "KukuPaste сохранит их в этом порядке.",
+          panelSummary: "Ctrl+Q вставит A. Ещё раз Ctrl+Q вставит B. Ещё раз — C.",
+          panelRisk: "Без поиска, повторного копирования и перепутанного порядка.",
+          productTitle: "Как работает KukuPaste",
+          productLead:
+            "Это маленькое Windows-приложение в трее для людей, которые каждый день переносят тексты между разными приложениями.",
+          product1Title: "1. Копируй как обычно",
+          product1Text: "Используй Ctrl+C в любом приложении. Каждый скопированный текст попадает в активный стек.",
+          product2Title: "2. Сохраняй порядок",
+          product2Text: "Первый скопированный текст остаётся первым, второй — вторым, и так дальше.",
+          product3Title: "3. Вставляй следующий",
+          product3Text: "Нажми Ctrl+Q, чтобы вставить следующий элемент стека в текущее окно.",
+          product4Title: "4. Сохраняй полезные сценарии",
+          product4Text: "Повторяющиеся последовательности можно сохранить как библиотеки и загрузить снова.",
+          pasteTitle: "Что делают горячие клавиши",
+          pasteLead: "У KukuPaste есть три простых режима: вставить следующий, выбрать вручную или вставить весь стек.",
+          paste1Title: "Ctrl+Q: вставить следующий",
+          paste1Text: "Вставляет один элемент. Нажми ещё раз, чтобы вставить следующий.",
+          paste2Title: "Удерживать Ctrl+Q: выбрать",
+          paste2Text: "Открывает маленький выбор, если нужно взять текст из стека или истории.",
+          paste3Title: "Ctrl+Shift+Q: вставить всё",
+          paste3Text: "Вставляет весь стек сразу: два, три, пять или больше текстов, в зависимости от лимита плана.",
+          paste4Title: "После вставки: история",
+          paste4Text: "Вставленные элементы уходят из активного стека и остаются в локальной истории, чтобы их можно было вернуть.",
+          pasteFormats: "Форматы вставки всего стека: обычный текст, разделение через ---, или Section 1 / Section 2 / Section 3.",
+          whereTitle: "Когда это пригодится",
+          whereLead:
+            "Используй KukuPaste, когда ты уже знаешь несколько следующих текстов, но не хочешь искать их, копировать заново и прыгать по вкладкам.",
+          where1Title: "Claude, Codex, Cursor",
+          where1Text: "Вставляй несколько шагов промпта без ручной сборки одного и того же диалога.",
+          where2Title: "Ответы клиентам",
+          where2Text: "Держи повторяющиеся ответы под рукой для поддержки, вопросов пользователей и onboarding.",
+          where3Title: "Sales follow-ups",
+          where3Text: "Отправляй первый ответ, мягкое напоминание и следующие шаги без переписывания с нуля.",
+          where4Title: "Контент и заметки",
+          where4Text: "Переноси outlines, scripts, research notes и посты между приложениями в правильном порядке.",
+          whyLead:
+            "Обычный clipboard помогает найти то, что ты копировал раньше. KukuPaste помогает закончить маленькую текстовую последовательность прямо сейчас.",
+          bigPromptTitle: "Обычный clipboard",
+          bigPromptText: "Ты открываешь историю, ищешь нужный текст, копируешь его снова и надеешься, что выбрал правильный.",
+          workflowTitle: "Стек KukuPaste",
+          workflowText:
+            "Ты один раз копируешь тексты, сохраняешь порядок и вставляешь следующий элемент каждый раз, когда нажимаешь Ctrl+Q.",
+          proTitle: "KukuPaste Pro Lifetime",
+          proLead:
+            "Единоразовая покупка $39.99. Цена для ранних пользователей, которым нужны повышенные лимиты, переносимые библиотеки и готовые сценарии.",
+          proIncludesText:
+            "Pro нужен тем, кто использует KukuPaste каждый день: больше стек, больше история, больше библиотек и import/export.",
+          freePlanText: "Попробовать базовую механику: 3 элемента в стеке, 50 элементов истории и до 3 пользовательских библиотек.",
+          packsTitle: "Готовые сценарии уже внутри",
+          packsLead:
+            "Открой Library, выбери готовый сценарий и нажми «В стек». После этого KukuPaste будет вставлять его шаги по порядку через Ctrl+Q. Английское название из приложения указано в каждой карточке.",
+          securityTitle: "Приватно по умолчанию",
+          securityLead:
+            "KukuPaste не заменяет AI и не отправляет твои данные в облако KukuPaste. Твои clipboard workflows хранятся локально на Windows-устройстве.",
+          secAccount: "Текущую версию можно попробовать без регистрации.",
+          downloadTitle: "Скачать текущую Windows-версию",
+          downloadLead:
+            "Кнопка скачивания загрузит текущий установщик для Windows. Покупка Pro открывается через Lemon Squeezy. Сборка пока не подписана, поэтому Windows SmartScreen может показать предупреждение.",
+          openPdf: "Открыть PDF-обзор",
+          hashText: "Этот SHA-256 нужен, чтобы проверить, что installer-файл не изменился после скачивания.",
+          feedbackTitle: "Напиши, что было непонятно",
+          feedbackLead:
+            "Не обязательно покупать Pro, чтобы написать отзыв. Напиши, что ты попробовал, что сработало и где страница или приложение сбили с толку.",
+          sendFeedback: "Написать отзыв",
+          feedbackAskTitle: "Что могло пойти не так",
+          feedbackAskText: "Выбери ближайшую проблему и напиши короткое сообщение.",
+          feedbackProblem1: "Не понял, с чего начать.",
+          feedbackProblem2: "Не сработал Ctrl+Q или Ctrl+Shift+Q.",
+          feedbackProblem3: "Не нашёл нужный сценарий в Library.",
+          feedbackProblem4: "Windows показал предупреждение при установке.",
+          feedbackProblem5: "На этой странице что-то было непонятно.",
+          footer: "KukuPaste · Скопируй несколько текстов. Вставь их по порядку. · Client landing v2 · 2026-06-13",
+          packs: [
+            {
+              title: "Проверить работу",
+              appName: "В приложении: Cursor Code Review Pack",
+              intro: "Для проверки текста, файла, задачи или изменения перед отправкой другому человеку.",
+              tags: ["Проверка", "Меньше ошибок", "Перед отправкой"],
+              solves: "Помогает попросить AI найти ошибки, непонятные места, пропущенные шаги и риски.",
+              when: "Когда ты что-то изменил и хочешь быстро проверить перед отправкой.",
+              inserts: "Проверь это, найди риски, предложи маленький фикс, сделай короткое резюме.",
+              forWhom: "Тем, кто пишет, собирает, редактирует или готовит работу для клиентов.",
+              example: [
+                "Ты закончил задачу и хочешь убедиться, что ничего важного не сломалось и не пропущено.",
+                "Ctrl+Q вставляет простой запрос на проверку.",
+                "Ты добавляешь текст, файл или короткое описание изменения.",
+                "Следующий Ctrl+Q просит самый маленький фикс, а не полную переделку.",
+                "Итог: ты отправляешь работу спокойнее.",
+              ],
+            },
+            {
+              title: "Ответ клиенту",
+              appName: "В приложении: Support Replies Pack",
+              intro: "Для спокойных ответов людям, когда они задают вопрос или пишут о проблеме.",
+              tags: ["Поддержка", "Ответы", "Вопросы"],
+              solves: "Превращает сумбурное сообщение в понятный и дружелюбный ответ.",
+              when: "Когда человек написал, что запутался, недоволен или не может разобраться.",
+              inserts: "Вежливый ответ, короткая версия для чата, follow-up, возможные вопросы.",
+              forWhom: "Основателям, поддержке, фрилансерам и small business.",
+              example: [
+                "Человек пишет: «Я нажал Import и не понял, что делать дальше».",
+                "Ctrl+Q вставляет запрос: написать спокойный ответ с простыми шагами.",
+                "Следующий Ctrl+Q делает короткую версию для чата.",
+                "Следующий Ctrl+Q готовит follow-up, если человеку всё ещё нужна помощь.",
+                "Итог: ответ выглядит понятно и профессионально, даже если ты занят.",
+              ],
+            },
+            {
+              title: "Объяснить идею",
+              appName: "В приложении: YouTube Script Pack",
+              intro: "Для превращения сырой идеи в простое объяснение, сценарий видео, пост или demo-текст.",
+              tags: ["Контент", "Демо", "Посты"],
+              solves: "Помогает перейти от «я понимаю у себя в голове» к тексту, который поймёт другой человек.",
+              when: "Когда нужно быстро объяснить продукт, функцию, услугу или идею.",
+              inserts: "Короткое объяснение, начало ролика, сценарий, идеи заголовков, версии поста.",
+              forWhom: "Создателям, основателям, маркетологам, преподавателям и indie makers.",
+              example: [
+                "У тебя есть идея, но ты не знаешь, как объяснить её коротко и понятно.",
+                "Ctrl+Q просит AI разложить идею на простую структуру.",
+                "Следующий Ctrl+Q пишет первые 30 секунд.",
+                "Следующие шаги делают сценарий, заголовки и короткие посты.",
+                "Итог: одна идея превращается в материал для страницы, видео или сообщения.",
+              ],
+            },
+            {
+              title: "Напомнить о себе",
+              appName: "В приложении: Sales Follow-up Pack",
+              intro: "Для аккуратных напоминаний без давления и ощущения спама.",
+              tags: ["Продажи", "Письма", "Follow-up"],
+              solves: "Помогает написать следующее сообщение, если человек не ответил.",
+              when: "После звонка, демо, предложения, сообщения или нескольких тихих дней.",
+              inserts: "Первый follow-up, мягкое напоминание, следующий шаг, возможные сомнения.",
+              forWhom: "Продажам, агентствам, консультантам, основателям и фрилансерам.",
+              example: [
+                "Ты написал человеку, но он не ответил.",
+                "Ctrl+Q вставляет запрос на вежливое напоминание.",
+                "Ты добавляешь пару слов о прошлом разговоре.",
+                "Следующий Ctrl+Q делает сообщение мягче или короче.",
+                "Итог: разговор продолжается, но не выглядит как спам.",
+              ],
+            },
+            {
+              title: "Разобраться в информации",
+              appName: "В приложении: Research Brief Pack",
+              intro: "Для превращения кучи заметок, ссылок или мнений в понятное резюме.",
+              tags: ["Анализ", "Решения", "Ясность"],
+              solves: "Помогает понять, что важно, где риск и что проверить дальше.",
+              when: "Когда информации слишком много, а нужен понятный вывод.",
+              inserts: "Главные мысли, риски, вопросы, резюме, список следующих шагов.",
+              forWhom: "Всем, кто сравнивает варианты, принимает решения или готовит короткую справку.",
+              example: [
+                "У тебя есть заметки из разных мест, и непонятно, что действительно важно.",
+                "Ctrl+Q просит AI отделить главные факты от лишнего шума.",
+                "Следующий Ctrl+Q просит найти риски и открытые вопросы.",
+                "Следующий Ctrl+Q превращает всё в короткое резюме со следующими шагами.",
+                "Итог: ты быстрее понимаешь ситуацию и принимаешь более чистое решение.",
+              ],
+            },
+          ],
+        },
+        es: {
+          navHow: "Cómo funciona",
+          navBeta: "Descargar",
+          navPacks: "Bibliotecas",
+          eyebrow: "Orden en el portapapeles para trabajo real",
+          heroTitle: "Copia varios textos. Pégalos en orden.",
+          heroLead:
+            "KukuPaste recuerda los textos que copias con Ctrl+C y pega el siguiente con Ctrl+Q. Sirve para prompts, respuestas, notas, code review y mensajes repetidos.",
+          heroMeta: "Versión para Windows · build sin firmar · SHA-256 abajo",
+          download: "Descargar versión actual",
+          panelTitle: "Ejemplo simple",
+          panelReview: "Copia Texto A, luego Texto B, luego Texto C.",
+          panelFix: "KukuPaste los mantiene en ese orden.",
+          panelSummary: "Ctrl+Q pega A. Otra vez pega B. Otra vez pega C.",
+          panelRisk: "Sin buscar, sin copiar de nuevo, sin mezclar el orden.",
+          productTitle: "Cómo funciona KukuPaste",
+          productLead:
+            "Es una pequeña app de Windows en la bandeja para personas que mueven textos entre aplicaciones todo el día.",
+          product1Title: "1. Copia normalmente",
+          product1Text: "Usa Ctrl+C en cualquier app. Cada texto copiado se agrega al stack activo.",
+          product2Title: "2. Mantén el orden",
+          product2Text: "El primer texto queda primero, el segundo queda segundo, y así sigue.",
+          product3Title: "3. Pega el siguiente",
+          product3Text: "Presiona Ctrl+Q para pegar el siguiente elemento del stack en la ventana actual.",
+          product4Title: "4. Guarda flujos útiles",
+          product4Text: "Guarda secuencias repetidas como bibliotecas y cárgalas de nuevo cuando las necesites.",
+          pasteTitle: "Qué hacen los atajos",
+          pasteLead: "KukuPaste tiene tres formas simples de pegar: siguiente, selector, o todo el stack.",
+          paste1Title: "Ctrl+Q: pegar siguiente",
+          paste1Text: "Pega un elemento. Presiona otra vez para pegar el siguiente.",
+          paste2Title: "Mantener Ctrl+Q: elegir",
+          paste2Text: "Abre un selector pequeño si quieres elegir desde el stack o el historial.",
+          paste3Title: "Ctrl+Shift+Q: pegar todo",
+          paste3Text: "Pega todo el stack de una vez: dos, tres, cinco o más textos, según el límite de tu plan.",
+          paste4Title: "Después de pegar: historial",
+          paste4Text: "Los elementos pegados salen del stack activo y quedan en el historial local para poder restaurarlos.",
+          pasteFormats: "Formatos para pegar todo: texto simple, separado por ---, o Section 1 / Section 2 / Section 3.",
+          whereTitle: "Cuándo usarlo",
+          whereLead:
+            "Usa KukuPaste cuando ya sabes los próximos textos que necesitas, pero no quieres buscarlos, copiarlos otra vez ni saltar entre pestañas.",
+          where1Title: "Claude, Codex, Cursor",
+          where1Text: "Pega varios pasos de prompt sin reconstruir la misma conversación a mano.",
+          where2Title: "Respuestas a clientes",
+          where2Text: "Ten respuestas repetidas listas para soporte, preguntas de usuarios y onboarding.",
+          where3Title: "Sales follow-ups",
+          where3Text: "Envía una primera respuesta, un recordatorio suave y próximos pasos sin reescribir todo.",
+          where4Title: "Contenido y notas",
+          where4Text: "Mueve outlines, scripts, notas de investigación y posts entre apps en el orden correcto.",
+          whyLead:
+            "Un portapapeles normal ayuda a encontrar algo que copiaste antes. KukuPaste ayuda a terminar una pequeña secuencia de texto ahora.",
+          bigPromptTitle: "Portapapeles normal",
+          bigPromptText: "Abres el historial, buscas el texto correcto, lo copias otra vez y esperas que sea el correcto.",
+          workflowTitle: "Stack de KukuPaste",
+          workflowText:
+            "Copias los textos una vez, mantienes el orden y pegas el siguiente cada vez que presionas Ctrl+Q.",
+          proTitle: "KukuPaste Pro Lifetime",
+          proLead:
+            "Pago único de $39.99. Precio para usuarios tempranos que necesitan límites más altos, bibliotecas portables y escenarios listos.",
+          proIncludesText:
+            "Pro es para quienes usan KukuPaste todos los días y necesitan stacks más grandes, más historial, más bibliotecas e import/export.",
+          freePlanText: "Prueba el flujo principal: 3 elementos en stack, 50 elementos de historial y hasta 3 bibliotecas de usuario.",
+          packsTitle: "Escenarios listos dentro de la app",
+          packsLead:
+            "Abre Library, elige un escenario listo y haz clic en “To stack”. Después, KukuPaste pega sus pasos uno por uno con Ctrl+Q. El nombre en inglés que aparece en la app está en cada tarjeta.",
+          securityTitle: "Privado por defecto",
+          securityLead:
+            "KukuPaste no reemplaza la IA y no envía tus datos a una nube de KukuPaste. Guarda tus clipboard workflows localmente en tu dispositivo Windows.",
+          secAccount: "Puedes probar la versión actual sin formularios de registro.",
+          downloadTitle: "Descarga la versión actual para Windows",
+          downloadLead:
+            "Download instala la versión actual para Windows. Buy Pro abre Lemon Squeezy. Este build no está firmado, así que Windows SmartScreen puede mostrar una advertencia.",
+          openPdf: "Abrir resumen PDF",
+          hashText: "Usa este SHA-256 para comprobar que el instalador no cambió después de descargarlo.",
+          feedbackTitle: "Cuéntame qué no quedó claro",
+          feedbackLead:
+            "No necesitas comprar Pro para enviar feedback. Cuenta qué probaste, qué funcionó y dónde la página o la app te confundieron.",
+          sendFeedback: "Enviar comentario",
+          feedbackAskTitle: "Qué puede salir mal",
+          feedbackAskText: "Elige el problema más cercano y escribe un mensaje corto.",
+          feedbackProblem1: "No entendí cómo empezar.",
+          feedbackProblem2: "Ctrl+Q o Ctrl+Shift+Q no funcionó.",
+          feedbackProblem3: "No encontré el escenario correcto en Library.",
+          feedbackProblem4: "Windows mostró una advertencia durante la instalación.",
+          feedbackProblem5: "Algo en esta página no quedó claro.",
+          footer: "KukuPaste · Copia varios textos. Pégalos en orden. · Client landing v2 · 2026-06-13",
+          packs: [
+            {
+              title: "Revisar mi trabajo",
+              appName: "En la app: Cursor Code Review Pack",
+              intro: "Para revisar un texto, archivo, tarea o cambio antes de enviarlo a otra persona.",
+              tags: ["Revisión", "Menos errores", "Antes de enviar"],
+              solves: "Ayuda a pedirle a la IA que encuentre errores, partes confusas, pasos faltantes y riesgos.",
+              when: "Cuando cambiaste algo y quieres una última revisión antes de enviarlo.",
+              inserts: "Revisa esto, encuentra riesgos, sugiere un arreglo pequeño, escribe un resumen corto.",
+              forWhom: "Personas que escriben, construyen, editan o preparan trabajo para clientes.",
+              example: [
+                "Terminaste una tarea y quieres asegurar que nada importante esté roto o falte.",
+                "Ctrl+Q inserta una solicitud simple de revisión.",
+                "Agregas el texto, archivo o descripción corta del cambio.",
+                "El siguiente Ctrl+Q pide el arreglo más pequeño, no una reescritura completa.",
+                "Resultado: envías el trabajo con más confianza.",
+              ],
+            },
+            {
+              title: "Responder a un cliente",
+              appName: "En la app: Support Replies Pack",
+              intro: "Para responder con calma cuando alguien hace una pregunta o reporta un problema.",
+              tags: ["Soporte", "Respuestas", "Preguntas"],
+              solves: "Convierte un mensaje desordenado en una respuesta clara y amable.",
+              when: "Cuando alguien escribe que está confundido, molesto o bloqueado.",
+              inserts: "Respuesta amable, versión corta para chat, follow-up, posibles preguntas.",
+              forWhom: "Fundadores, soporte, freelancers y pequeños negocios.",
+              example: [
+                "Una persona escribe: 'Hice clic en Import y no entiendo qué hacer después'.",
+                "Ctrl+Q inserta una solicitud para escribir una respuesta tranquila con pasos simples.",
+                "El siguiente Ctrl+Q hace una versión más corta para chat.",
+                "El siguiente Ctrl+Q prepara un follow-up si la persona todavía necesita ayuda.",
+                "Resultado: tu respuesta suena clara y profesional, incluso si estás ocupado.",
+              ],
+            },
+            {
+              title: "Explicar una idea",
+              appName: "En la app: YouTube Script Pack",
+              intro: "Para convertir una idea en una explicación simple, guion de video, post o texto de demo.",
+              tags: ["Contenido", "Demo", "Posts"],
+              solves: "Ayuda a pasar de 'yo lo entiendo' a un texto que otra persona entiende.",
+              when: "Cuando necesitas explicar rápido un producto, función, servicio o idea.",
+              inserts: "Explicación corta, inicio del video, guion, títulos, versiones para post.",
+              forWhom: "Creadores, fundadores, marketers, profesores e indie makers.",
+              example: [
+                "Tienes una idea, pero no sabes cómo explicarla de forma corta y clara.",
+                "Ctrl+Q pide a la IA convertir la idea en una estructura simple.",
+                "El siguiente Ctrl+Q escribe los primeros 30 segundos.",
+                "Los siguientes pasos crean un guion, títulos y posts cortos.",
+                "Resultado: una idea se convierte en material para una página, video o mensaje.",
+              ],
+            },
+            {
+              title: "Recordar sin presionar",
+              appName: "En la app: Sales Follow-up Pack",
+              intro: "Para escribir recordatorios educados sin sonar insistente.",
+              tags: ["Ventas", "Email", "Follow-up"],
+              solves: "Ayuda a escribir el próximo mensaje cuando alguien no respondió.",
+              when: "Después de una llamada, demo, propuesta, mensaje o algunos días sin respuesta.",
+              inserts: "Primer follow-up, recordatorio suave, próximo paso, posibles dudas.",
+              forWhom: "Ventas, agencias, consultores, fundadores y freelancers.",
+              example: [
+                "Escribiste a alguien, pero no respondió.",
+                "Ctrl+Q inserta una solicitud para un recordatorio amable.",
+                "Agregas unas palabras sobre la conversación anterior.",
+                "El siguiente Ctrl+Q hace el mensaje más suave o más corto.",
+                "Resultado: mantienes viva la conversación sin sonar como spam.",
+              ],
+            },
+            {
+              title: "Entender información",
+              appName: "En la app: Research Brief Pack",
+              intro: "Para convertir muchas notas, enlaces u opiniones en un resumen claro.",
+              tags: ["Análisis", "Decisiones", "Claridad"],
+              solves: "Ayuda a ver qué importa, dónde hay riesgo y qué revisar después.",
+              when: "Cuando hay demasiada información y necesitas una conclusión clara.",
+              inserts: "Puntos principales, riesgos, preguntas, resumen, próximos pasos.",
+              forWhom: "Cualquiera que compare opciones, tome decisiones o prepare un resumen corto.",
+              example: [
+                "Tienes notas de muchos lugares y no sabes qué es realmente importante.",
+                "Ctrl+Q pide a la IA separar los datos principales del ruido.",
+                "El siguiente Ctrl+Q pide riesgos y preguntas abiertas.",
+                "El siguiente Ctrl+Q lo convierte en un resumen corto con próximos pasos.",
+                "Resultado: entiendes la situación más rápido y decides con más claridad.",
+              ],
+            },
+          ],
+        },
+      };
+
+      Object.entries(clientLandingCopy).forEach(([lang, values]) => {
+        Object.assign(copy[lang], values);
+      });
+
       function renderPacks(lang) {
         const data = copy[lang];
         const labels = data.labels;
@@ -1280,6 +1977,7 @@
               <article class="pack">
                 <div>
                   <h3>${pack.title}</h3>
+                  ${pack.appName ? `<p class="app-name">${pack.appName}</p>` : ""}
                   <p>${pack.intro}</p>
                   <div class="pack-meta">${pack.tags.map((tag) => `<span class="pill">${tag}</span>`).join("")}</div>
                 </div>
