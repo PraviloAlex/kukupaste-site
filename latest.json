@@ -1,11 +1,11 @@
 {
-  "version": "1.0.0",
-  "notes": "Счётчик вставки поверх других окон. Автообновление. Починен автозапуск с Windows и обучение.",
-  "pub_date": "2026-08-11T20:17:12.076Z",
+  "version": "1.0.1",
+  "notes": "Окно больше не прячется в трей при перетаскивании. Стрелки библиотеки видны на светлой теме. Минус и плюс вместо системных стрелок в настройках.",
+  "pub_date": "2026-08-11T21:14:59.337Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZlFza0FYcDdiQW1VakRoUm1QcUFOLzMxdXpuQTZzMXJUYkg0UGNPdzRvSHpaMy93ZTYrYm5ETnFWNmdJZjBkSDZwcFVKWm8yR1kzaXd1Z0ErREZrTmZHb0V5ZVc0dEFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDc5NDE3CWZpbGU6S3VrdVBhc3RlXzEuMC4wX3g2NC1zZXR1cC5leGUKaTZlOHN6OTJZNmxFNkFTWlJJWG16YWsvZzVjVFhydFY0K1RQRStCb29xNmVMNVk0YkdyYi9EY0wzZGovbUh1eml1L3lJV2VlYUtXMitWcURZMW9kQ1E9PQo=",
-      "url": "https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.0.0_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZlFza0FYcDdiQXJQRTV6cUhoTlQyZ1R3NXVxZTRRN0tLWGM0bDN2c1pLUzRuZVJtNFpkS3I1ZUNWaGxTOGg2MHJXcmIvSC9aNWViYjFyRUl3eEh6cFNwQ0h4M1pKY1E4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDgyODY5CWZpbGU6S3VrdVBhc3RlXzEuMC4xX3g2NC1zZXR1cC5leGUKOEN0TTNvS1RPTC8yNzZoTHdkVVBlNnlSV0JIQU8wU1p6VmhIMVc0S0xJVksvZjNvR0Rub2JJRmdidnhqWjFuUEszeTB1RGFlUmJtYW82bllQN2NjQ1E9PQo=",
+      "url": "https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.0.1_x64-setup.exe"
     }
   }
 }
