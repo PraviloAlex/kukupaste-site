@@ -1,11 +1,11 @@
 {
-  "version": "1.0.1",
-  "notes": "Окно больше не прячется в трей при перетаскивании. Стрелки библиотеки видны на светлой теме. Минус и плюс вместо системных стрелок в настройках.",
-  "pub_date": "2026-08-11T21:14:59.337Z",
+  "version": "1.0.2",
+  "notes": "Иконка в трее показывает, сколько текстов в стеке. Приложение предупреждает, когда стек переполнен и старый текст вытесняется. Бесплатный стек увеличен с 3 до 5.",
+  "pub_date": "2026-08-13T19:33:38.793Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZlFza0FYcDdiQXJQRTV6cUhoTlQyZ1R3NXVxZTRRN0tLWGM0bDN2c1pLUzRuZVJtNFpkS3I1ZUNWaGxTOGg2MHJXcmIvSC9aNWViYjFyRUl3eEh6cFNwQ0h4M1pKY1E4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDgyODY5CWZpbGU6S3VrdVBhc3RlXzEuMC4xX3g2NC1zZXR1cC5leGUKOEN0TTNvS1RPTC8yNzZoTHdkVVBlNnlSV0JIQU8wU1p6VmhIMVc0S0xJVksvZjNvR0Rub2JJRmdidnhqWjFuUEszeTB1RGFlUmJtYW82bllQN2NjQ1E9PQo=",
-      "url": "https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.0.1_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZlFza0FYcDdiQWwvVGE4Y2RwUjFBS3ZFN2dvYU9ycVZhRURsMVhSUXZPRDVzZXJBYis5MmZURlE4bnNjbzRpYzJ5NkVQc250d0gxckxvUGR4YUpwWm4xRmkzYU0rRHcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjQ5NTkzCWZpbGU6S3VrdVBhc3RlXzEuMC4yX3g2NC1zZXR1cC5leGUKc0lSbmg1ZnJobW9NaFFGYVVuNzlpZjc2Y3kxRTN3SDlvbmVDakZYcjVpcGNnandPTzNBUXJERU5Ednp6WnkwajdOUEhocVljeGRvU3lVT2gybEErQUE9PQo=",
+      "url": "https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.0.2_x64-setup.exe"
     }
   }
 }
