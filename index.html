@@ -3,7 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KukuPaste - AI workflow packs</title>
+    <!-- The title is what search results and browser tabs show, so it repeats
+         the one promise the page is built on rather than naming a side line. -->
+    <title>KukuPaste — copy several texts, paste them in order</title>
+
+    <!-- Without these a link to this page opens as a blank grey card in
+         Telegram, Discord, Slack and X -- for a product that spreads by links
+         that is the difference between a click and nothing. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KukuPaste" />
+    <meta property="og:title" content="Copy several texts. Paste them in order." />
+    <meta
+      property="og:description"
+      content="Ctrl+C collects, Ctrl+Q pastes the next one. Local-first Windows utility, no cloud, no account."
+    />
+    <meta property="og:url" content="https://praviloalex.github.io/kukupaste-site/" />
+    <!-- og:image is deliberately absent until there is a real picture of the
+         app. A card with a title and no image still beats a card carrying a
+         picture that looks unfinished. Add assets/social-card.png here, 1200x630,
+         together with the matching twitter:image, and the card is complete. -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Copy several texts. Paste them in order." />
+    <meta
+      name="twitter:description"
+      content="Ctrl+C collects, Ctrl+Q pastes the next one. Local-first Windows utility, no cloud, no account."
+    />
     <meta
       name="description"
       content="KukuPaste is a local-first Windows utility for repeatable AI workflows in Claude, Codex, Cursor, support, sales, research, and content."
@@ -311,6 +335,17 @@
 
       :root[data-theme="dark"] .workflow-panel {
         background: var(--panel);
+      }
+
+      /* Ready for a screenshot of the running app in the hero panel. */
+      .hero-shot {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        margin-bottom: 18px;
       }
 
       .panel-head {
@@ -657,7 +692,7 @@
             KukuPaste remembers the texts you copy with Ctrl+C and pastes the next one with Ctrl+Q. Use it for prompts, replies, notes, code review steps, and repeated messages.
           </p>
           <div class="actions">
-            <a class="btn primary" href="downloads/KukuPaste_1.0.2_x64-setup.exe" data-i18n="download">Download current version</a>
+            <a class="btn primary" href="downloads/KukuPaste_1.1.0_x64-setup.exe" data-i18n="download">Download current version</a>
             <a class="btn primary" href="https://kukuluku.lemonsqueezy.com/checkout/buy/588de431-dbca-4648-93d8-4d403c2dc849" data-i18n="buyPro">Buy Pro $39.99</a>
             <a class="btn" href="https://t.me/kukuluku_bot" data-i18n="sendFeedback">Send feedback</a>
           </div>
@@ -671,6 +706,10 @@
         </div>
 
         <aside class="workflow-panel" aria-label="Workflow example">
+          <!-- A screenshot of the running app belongs here: the page still has
+               no picture of the product. Left empty on purpose rather than
+               filled with the old generated demo, which looked unfinished and
+               would cost more trust than the empty space does. -->
           <div class="panel-head">
             <span data-i18n="panelTitle">Simple example</span>
             <span>Ctrl+Q</span>
@@ -817,14 +856,14 @@
               Download installs the current Windows version. Buy Pro opens Lemon Squeezy. This build is unsigned, so Windows SmartScreen may show a warning.
             </p>
             <div class="actions">
-              <a class="btn primary" href="downloads/KukuPaste_1.0.2_x64-setup.exe" data-i18n="download">Download current version</a>
+              <a class="btn primary" href="downloads/KukuPaste_1.1.0_x64-setup.exe" data-i18n="download">Download current version</a>
               <a class="btn primary" href="https://kukuluku.lemonsqueezy.com/checkout/buy/588de431-dbca-4648-93d8-4d403c2dc849" data-i18n="buyPro">Buy Pro $39.99</a>
               <a class="btn" href="packs-sales-sheet.pdf" data-i18n="openPdf">Open PDF overview</a>
             </div>
           </div>
           <div>
             <h3>SHA-256</h3>
-            <div class="hash">32A676E370C74D62B7989325775E0F0780736D69E13806E9468837282622A00C</div>
+            <div class="hash">695BAEB04443E239497C8AC1187C3D1692F2C4225A3E63F05C193D57B960CC15</div>
             <p class="meta" data-i18n="hashText">Use this hash to check that the installer file did not change after download.</p>
           </div>
         </div>

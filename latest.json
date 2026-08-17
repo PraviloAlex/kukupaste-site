@@ -1,11 +1,11 @@
 {
-  "version": "1.0.2",
-  "notes": "Иконка в трее показывает, сколько текстов в стеке. Приложение предупреждает, когда стек переполнен и старый текст вытесняется. Бесплатный стек увеличен с 3 до 5.",
-  "pub_date": "2026-08-13T19:33:38.793Z",
+  "version": "1.1.0",
+  "notes": "",
+  "pub_date": "2026-08-15T17:25:43.448Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZlFza0FYcDdiQWwvVGE4Y2RwUjFBS3ZFN2dvYU9ycVZhRURsMVhSUXZPRDVzZXJBYis5MmZURlE4bnNjbzRpYzJ5NkVQc250d0gxckxvUGR4YUpwWm4xRmkzYU0rRHcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjQ5NTkzCWZpbGU6S3VrdVBhc3RlXzEuMC4yX3g2NC1zZXR1cC5leGUKc0lSbmg1ZnJobW9NaFFGYVVuNzlpZjc2Y3kxRTN3SDlvbmVDakZYcjVpcGNnandPTzNBUXJERU5Ednp6WnkwajdOUEhocVljeGRvU3lVT2gybEErQUE9PQo=",
-      "url": "https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.0.2_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZlFza0FYcDdiQWppYkJJQmVUb2JuUk9LVUNRMERGdmFQQU5sSTFmYk9tMTRjbHFSVERsbUpvblFKS1NHSUtLemg3dlk3LzJxRWdSOU1CWW5naVZqd1dCS1VxSUJRUFF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NzQ4NTUzCWZpbGU6S3VrdVBhc3RlXzEuMS4wX3g2NC1zZXR1cC5leGUKa2U2SkE5Q2F5V2VvZzUrSzJxT1hwR1llQXdCV0Z6UjZNaWMzUm1kUCs0VVJFNWx6OUp1eDBhYjFwbkFkdE5LRlNJdzNodWpSdGcvakhQdVR2R2xoREE9PQo=",
+      "url": "https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.1.0_x64-setup.exe"
     }
   }
 }
