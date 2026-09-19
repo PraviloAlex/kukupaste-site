@@ -27,7 +27,7 @@ Sequences you repeat can be saved as a library and reloaded with one click.
 
 ## Download
 
-[**KukuPaste 1.2.0 for Windows**](https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.2.0_x64-setup.exe)
+[**KukuPaste 1.2.1 for Windows**](https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.2.1_x64-setup.exe)
 · 4 MB · Windows 10 and 11
 
 The build is not signed with a certificate yet, so Windows SmartScreen may warn on first

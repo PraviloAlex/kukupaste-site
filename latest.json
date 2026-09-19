@@ -1,11 +1,11 @@
 {
-  "version": "1.2.0",
-  "notes": "Кнопка «Вставить» больше не теряет текст — теперь она вставляет в то окно, из которого вы пришли. Раньше текст исчезал без следа.\nЗначок в трее показывает состояние: серый — захват на паузе, зелёный — идёт сбор стека.\nСтрока над списком говорит, сколько в стеке и что случится при следующем копировании.\nКнопки отзываются на наведение и нажатие; в светлой теме они больше не выглядят вдавленными.",
-  "pub_date": "2026-09-14T19:31:13.246Z",
+  "version": "1.2.1",
+  "notes": "Экран плана в настройках показывал неверные лимиты: занижал бесплатный и завышал Pro. Теперь там те числа, которые приложение действительно соблюдает.\nКнопка Telegram в настройках была нечитаемой на светлой теме.\nПолоса прокрутки в списке подсвечивается, когда ведёшь над ним мышью.",
+  "pub_date": "2026-09-19T00:10:17.884Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZlFza0FYcDdiQXNoWlNBSjBVY0s3RmNSLytEZHNtRU80WDZTTDZHTjFyVzVIMzBmazdKZ2VMZlJRWWgzMTk1ZWVCY3V0STY1ZnJjZGNyc0ZNMWNwYWNhSm13SFA3eFFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDA4NzE3CWZpbGU6S3VrdVBhc3RlXzEuMi4wX3g2NC1zZXR1cC5leGUKLy9MRlZrWHNtQTRFdzVxalYyeFFqSWQ0QjZXWS9sQXd3UUkrZUkybHhTdGIxSW4yY1BVdnM0dHREYytrYkNSeGVSNzhacXlVakQwMnVGRGRSeVU5REE9PQo=",
-      "url": "https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.2.0_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRZlFza0FYcDdiQWtOM3NLdFY3bnJERmhYTWY5T1A3OVNRd1RFYU9zOHQwREZtNTdnZG1SM0JTSDhqblRmNG9GazllWTFuQStqaEhoc1B5SGl6QkpwSUNTT3h4Tm4xMXc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5Nzc2NjA0CWZpbGU6S3VrdVBhc3RlXzEuMi4xX3g2NC1zZXR1cC5leGUKa1grL1VWVndsdXN2OWxlR3J3Y01LUWhKYi9sTW1FYXR2UUxLTE1MTGtWRFRPV09zMXpDckd2Z1Z0d2pydWNadGw5RGRYYUY4M0Uzdkp2Qmc0L0JIQUE9PQo=",
+      "url": "https://praviloalex.github.io/kukupaste-site/downloads/KukuPaste_1.2.1_x64-setup.exe"
     }
   }
 }
